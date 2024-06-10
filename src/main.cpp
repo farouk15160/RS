@@ -27,10 +27,10 @@ HandleJson handleJson;
 //
 
 // HTTPDATA
-const char *ssid = "Corps Montania";
-const char *password = "1868astaburuaga1107";
-const char *server = "http://192.168.178.66:4443";
-const int httpPort = 4443;
+const char *ssid PROGMEM = "Corps Montania";
+const char *password PROGMEM = "1868astaburuaga1107";
+const char *server PROGMEM = "http://192.168.178.66:4443";
+const int httpPort PROGMEM = 4443;
 HttpGet http(ssid, password, server, httpPort);
 //
 //
@@ -44,6 +44,7 @@ void setup()
 
   json = http.httpGETRequest(server);
   Serial.println(json);
+  memset(json);
   if (!json)
   {
     Serial.println(F("Parsing input failed!"));
@@ -53,6 +54,8 @@ void setup()
   getInput.users = users;
   handleJson.printUsers();
 
+  json = "";
+  json.shrinkToFit();
   Serial.println(F("Zum Abbrechen , A Drücken"));
   Serial.println(F("Zum Eingeben , B Drücken"));
 }
