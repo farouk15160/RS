@@ -27,13 +27,13 @@ String HttpGet::httpGETRequest(const char *server)
 
     if (httpResponseCode > 0)
     {
-        Serial.print("HTTP Response code: ");
+        Serial.print(F("HTTP Response code: "));
         Serial.println(httpResponseCode);
         payload = http.getString();
     }
     else
     {
-        Serial.print("Error code: ");
+        Serial.print(F("Error code: "));
         Serial.println(httpResponseCode);
     }
     http.end();

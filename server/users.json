@@ -46,5 +46,31 @@
                 "password":2222
             }
         }
+    ],
+    "drinks":[
+      {
+        "id":"Augustina",
+        "number":1
+      },
+      {
+        "id":"SoftDrinks",
+        "number":2
+      },
+      {
+        "id":"Wasser",
+        "number":3
+      },
+      {
+        "id":"Veltins",
+        "number":4
+      },
+      {
+        "id":"Otti",
+        "number":5
+      },
+      {
+        "id":"A. Frei",
+        "number":6
+      }
     ]
 }

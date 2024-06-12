@@ -1,7 +1,8 @@
 #include "GetInput.h"
-
+#include "drinks.h"
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
+Drink drinks;
 GetInput::GetInput()
     : hexaKeys{
           {'1', '2', '3', 'A'},
@@ -163,7 +164,8 @@ void GetInput::handlePassword(const char *name, int correctPassword)
                 {
                     Serial.println(F("Passwort wurde richtig eingegeben"));
                     Serial.println(F("Was Hast du heute getrunken?"));
-                    handleDrinkList();
+                    // handleDrinkList();
+                    drinks.handleDrinkList(customKey, name);
 
                     loopePassword = false;
                 }
@@ -183,39 +185,4 @@ void GetInput::handlePassword(const char *name, int correctPassword)
         }
     }
     // 1 = 49  , 2=50 , 3 = 51 , 4=52 , 5=53 , 6=54 , 7=55 , 8=56 , 9=57 , A=65 , B=66 , C=67 , D=68 , *=42 , #=35 , 0=48
-}
-
-void GetInput::handleDrinkList()
-{
-    Serial.println("Getränke:");
-    Serial.println("__________________________________________");
-    Serial.println("Augustina 1  | SoftDrinks 2  | Wasser 3  |");
-    Serial.println("__________________________________________");
-    Serial.println("Veltins   4  | Otti       5  | A. Frei 6 |");
-    Serial.println("__________________________________________");
-    bool loopDrinks = true;
-
-    while (loopDrinks)
-    {
-        uint8_t customKey = customKeypad.getKey();
-        if (customKey)
-        {
-            uint8_t input = customKey - 48;
-            Serial.print(F("Key Pressed: "));
-            Serial.println(input);
-            if ((input) != 17 && (input) != 18)
-            {
-                Serial.println("DRINKS ");
-            }
-            else if (input == 18)
-            {
-                Serial.println("BESTÄTIGEN VON GETRÄNKE ");
-            }
-            else
-            {
-                Serial.println("Loop Drinks Ended");
-                loopDrinks = false;
-            }
-        }
-    }
 }

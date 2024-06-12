@@ -8,18 +8,18 @@ HandleJson::~HandleJson()
 {
 }
 
-JsonArray HandleJson::parseJson(const String &json)
-{
-    DeserializationError error = deserializeJson(doc, json);
-    if (error)
-    {
-        Serial.print(F("deserializeJson() failed: "));
-        Serial.println(error.f_str());
-        return JsonArray();
-    }
-    users = doc["users"].as<JsonArray>();
-    return users;
-}
+// JsonArray HandleJson::parseJson(const String &json, String key_)
+// {
+//     // DeserializationError error = deserializeJson(doc, json);
+//     // if (error)
+//     // {
+//     //     Serial.print(F("deserializeJson() failed: "));
+//     //     Serial.println(error.f_str());
+//     //     return JsonArray();
+//     // }
+//     // const auto data = doc.key_.as<JsonArray>();
+//     // return data;
+// }
 
 void HandleJson::printUsers() const
 {
