@@ -1,76 +1,68 @@
 {
-    "users":[
-        {
-            "farouk":{
-                "number":1223,
-                "password":1516
-            },
-            "cesar":{
-                "number":1225,
-                "password":1341
-            },
-            "iaroslav":{
-                "number":1226,
-                "password":1641
-            },
-            "micha":{
-                "number":1227,
-                "password":1741
-            },
-            "tammam":{
-                "number":1257,
-                "password":1991
-            },
-            "nils":{
-                "number":6657,
-                "password":8991
-            },
-            "marco":{
-                "number":1259,
-                "password":3391
-            },
-            "ala":{
-                "number":1269,
-                "password":6691
-            },
-            "emil":{
-                "number":1469,
-                "password":7891
-            },
-            "ahs":{
-                "number":1111,
-                "password":1111
-            },
-            "bummeln":{
-                "number":2222,
-                "password":2222
-            }
+    "users": {
+        "farouk": {
+            "number": 1223,
+            "password": 1516
+        },
+        "cesar": {
+            "number": 1225,
+            "password": 1341
+        },
+        "iaroslav": {
+            "number": 1226,
+            "password": 1641
+        },
+        "micha": {
+            "number": 1227,
+            "password": 1741
+        },
+        "tammam": {
+            "number": 1257,
+            "password": 1991
+        },
+        "nils": {
+            "number": 6657,
+            "password": 8991
+        },
+        "marco": {
+            "number": 1259,
+            "password": 3391
+        },
+        "ala": {
+            "number": 1269,
+            "password": 6691
+        },
+        "emil": {
+            "number": 1469,
+            "password": 7891
+        },
+        "ahs": {
+            "number": 1111,
+            "password": 1111
+        },
+        "bummeln": {
+            "number": 2222,
+            "password": 2222
         }
-    ],
-    "drinks":[
-      {
-        "id":"Augustina",
-        "number":1
-      },
-      {
-        "id":"SoftDrinks",
-        "number":2
-      },
-      {
-        "id":"Wasser",
-        "number":3
-      },
-      {
-        "id":"Veltins",
-        "number":4
-      },
-      {
-        "id":"Otti",
-        "number":5
-      },
-      {
-        "id":"A. Frei",
-        "number":6
-      }
-    ]
+    },
+    "drinks": {
+        "augustina": {
+            "number": 1
+        },
+        "veltins": {
+            "number": 2
+        },
+        "softDrinks": {
+            "number": 3
+        },
+        "a_frei": {
+            "number": 4
+        },
+        "wasser": {
+            "number": 5
+        },
+        "Otti": {
+            "number": 6
+        }
+    }
 }

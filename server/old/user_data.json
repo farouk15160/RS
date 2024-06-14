@@ -1,0 +1,14 @@
+{"user_data":[
+    {
+        "cb_name":"cesar",
+        "id":1234,
+        "drinks":{
+            "augustina":{"id":1 , "ammount":0},
+            "softDrinks":0,
+            "a_frei":0,
+            "veltins":0
+        }
+    }
+]
+
+}

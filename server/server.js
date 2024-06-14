@@ -1,26 +1,26 @@
-const https = require("http");
+const https = require("https");
 const fs = require("fs");
-const data = require("./users.json");
+const app = require("./app");
+const changeJson = require("./json");
 
-// Load SSL certificate and key
 const key = fs.readFileSync("private.key");
 const cert = fs.readFileSync("certificate.crt");
 const options = {
-  key: key, // Path to your private key file
-  cert: cert, // Path to your certificate file
+  key: key,
+  cert: cert,
 };
-// console.log("Private key:", key.toString()); // Debug statement
 
-// Create an HTTPS server
-const server = https
-  .createServer((req, res) => {
-    console.log(
-      `Received request from ${req.connection.remoteAddress} at ${new Date()}`
-    );
-    res.writeHead(200, { "Content-Type": "text/html" });
+// changeJson();
+const PORT = process.env.PORT || 1868;
 
-    res.end(JSON.stringify(data));
-  })
-  .listen(4443, () => {
-    console.log("Serving on https://localhost:4443");
-  });
+const server = https.createServer(options, app);
+server.on("error", (error) => {
+  console.error("HTTPS Server error:", error);
+});
+server.on("listening", () => {
+  console.log("Server is listening on port 3000");
+});
+
+server.listen(PORT, () => {
+  console.log("Serving on https://localhost:", PORT);
+});
