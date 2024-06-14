@@ -1,0 +1,28 @@
+{
+    "login":{
+        "welcome":"Willkommen",
+        "username":"Benutzername",
+        "Password":"Passwort",
+        "login":"Einloggen",
+        "logout":"Ausloggen",
+        "hide":"Verdecken",
+        "show":"Zeigen"
+    },
+    "help":{
+        "text":"Falls da Probleme vorlegen sollen, bitte CB Farouk Jamali Kontaktieren"
+    }
+    ,"general":{
+        "save":"Speichern",
+        "edit":"Bearbeiten",
+        "number":"Nummer",
+        "password":"Passwort",
+        "add":"Hinzufügen",
+        "close":"Schließen"
+    }
+    ,"error":{
+        "error_4":"Das Passwort und Id müssen vier Ziffern haben"
+    }
+    ,"navbar":{
+        "website":"Webseite"
+    }
+}

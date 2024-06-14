@@ -44,7 +44,7 @@ void setup()
   http.getData();
 
   json = http.httpGETRequest(server);
-  Serial.println(json);
+  // Serial.println(json);
   if (!json)
   {
     Serial.println(F("Parsing input failed!"));
