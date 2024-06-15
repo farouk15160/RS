@@ -4,7 +4,7 @@ const drinks = require("../../users.json");
 const { addNewDrinkData } = require("../../json");
 
 const checkId = () => {
-  let maxId = -Infinity; // Initialize with the lowest possible number
+  let maxId = -Infinity;
 
   for (const drink in drinks.drinks) {
     const id = drinks.drinks[drink].number;
@@ -40,8 +40,8 @@ const addNewData = (name, price) => {
       message: "Getränk existiert schon",
     };
   drinks.drinks[name] = {
-    id: checkId(),
-    price: 0,
+    number: checkId(),
+    price: price,
   };
   addNewDrinkData("users.json", drinks);
   return {

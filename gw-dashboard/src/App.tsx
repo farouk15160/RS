@@ -1,33 +1,25 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  // Navigate,
-} from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Login from "./pages/login/login";
 import Home from "./pages/home/home";
-import AuthContext, {
-  AuthContextType,
-  AuthProvider,
-} from "./contexts/AuthContext";
-import FallbackUI from "./components/fallbackUI";
+import AuthContext, { AuthContextType } from "./contexts/AuthContext";
 import Navbar from "./components/navbar/navbar";
 import { AnimatePresence, motion } from "framer-motion";
+import Drinks from "./pages/drinks/drinks";
 
 const App: React.FunctionComponent = () => {
+  const location: Partial<Location> | string = useLocation();
   const authContext = React.useContext<AuthContextType | undefined>(
     AuthContext
   );
 
-  console.log(authContext);
   return (
-    <Router>
+    <>
+      {authContext?.isLoggedIn && <Navbar />}
       <Flex flexDirection="column" w="100%" minH="600px" h="100vh">
         <AnimatePresence onExitComplete={() => window.scroll(0, 0)} mode="wait">
-          <Routes>
+          <Routes location={location} key={location.pathname}>
             <Route
               path="/login"
               element={
@@ -44,9 +36,22 @@ const App: React.FunctionComponent = () => {
               element={
                 authContext?.isLoggedIn ? (
                   <>
-                    <Navbar />
                     <AnimateDev>
                       <Home />
+                    </AnimateDev>
+                  </>
+                ) : (
+                  <Navigate to="login" />
+                )
+              }
+            />
+            <Route
+              path="/drinks"
+              element={
+                authContext?.isLoggedIn ? (
+                  <>
+                    <AnimateDev>
+                      <Drinks />
                     </AnimateDev>
                   </>
                 ) : (
@@ -69,7 +74,7 @@ const App: React.FunctionComponent = () => {
           </Routes>
         </AnimatePresence>
       </Flex>
-    </Router>
+    </>
   );
 };
 
@@ -83,14 +88,15 @@ export const AnimateDev: React.FC<IChildren> = ({ children }) => {
     <motion.div
       initial={{
         opacity: 0,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+
+        // display: "flex",
+        // flexDirection: "column",
+        // justifyContent: "center",
+        // alignItems: "center",
       }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1.5 }}
     >
       {children}
     </motion.div>

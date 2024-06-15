@@ -5,6 +5,7 @@ import {
   chakra,
   Flex,
   FormControl,
+  Image,
   Input,
   InputGroup,
   InputLeftElement,
@@ -41,6 +42,7 @@ const CFaPlus = chakra(FaPlus);
 
 const Home: React.FunctionComponent = () => {
   const [data, setData] = React.useState<any>();
+  // const [drink, setDrink] = React.useState<any>();
 
   const [load, setLoad] = React.useState<boolean>(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,7 +50,10 @@ const Home: React.FunctionComponent = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("https://192.168.178.66:1868/users");
+      // const drinks = await axios.get("https://192.168.178.66:1868/drinks");
       setData(response.data.allUsersData);
+      // setDrink(drinks.data.drinks_.augustina.img);
+      // console.log(drinks);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -56,7 +61,7 @@ const Home: React.FunctionComponent = () => {
   React.useEffect(() => {
     fetchData();
   }, []);
-
+  // console.log(drink);
   const [userName_, setUserName] = React.useState<string>(""); // Initialize state variables
   const [number_, setNumber] = React.useState<number>(); // Assuming number_ is a string
   const [userPassword_, setUserPassword] = React.useState<number>();
@@ -86,7 +91,6 @@ const Home: React.FunctionComponent = () => {
       },
     };
 
-    console.log(newDataSend);
     try {
       await axios.post("https://192.168.178.66:1868/users", newDataSend);
       console.log("POST request successful");
@@ -126,6 +130,7 @@ const Home: React.FunctionComponent = () => {
       justifyContent="center"
       gap="20px"
     >
+      {/* {drink && <Image w={400} src={drink} />} */}
       {data ? (
         <RenderCards data={data} fetchData={fetchData} setData={setData} />
       ) : (

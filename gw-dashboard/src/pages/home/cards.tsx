@@ -143,7 +143,7 @@ export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const TABLE = useDisclosure();
   const cancelRef = React.useRef<HTMLButtonElement>(null);
-  console.log(user);
+
   const onDelete = async () => {
     onClose();
     let dataSend: any = {
@@ -154,7 +154,6 @@ export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
     };
 
     dataSend = JSON.stringify(dataSend);
-    console.log(dataSend);
 
     try {
       const response = await axios.delete("https://192.168.178.66:1868/users", {

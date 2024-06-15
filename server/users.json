@@ -44,39 +44,43 @@
     "drinks": {
         "augustina": {
             "number": 1,
-            "price": 0
+            "price": 0,
+            "img":"./imgs/augustina.png"
         },
         "veltins": {
             "number": 2,
-            "price": 0
+            "price": 0,
+            "img":""
         },
         "softDrinks": {
             "number": 3,
-            "price": 0
+            "price": 0,
+            "img":""
         },
         "a_frei": {
             "number": 4,
-            "price": 0
+            "price": 0,
+            "img":""
         },
         "wasser": {
             "number": 5,
-            "price": 0
+            "price": 0,
+            "img":""
         },
         "otti": {
             "number": 6,
-            "price": 0
+            "price": 0,
+            "img":""
         },
         "sauna": {
-            "id": 7,
-            "price": 0
+            "number": 7,
+            "price": 1.2,
+            "img":""
         },
         "wäsche": {
-            "id": 7,
-            "price": 0
-        },
-        "trocknen": {
-            "id": 7,
-            "price": 0
+            "number": 8,
+            "price": 1.2,
+            "img":""
         }
     }
 }

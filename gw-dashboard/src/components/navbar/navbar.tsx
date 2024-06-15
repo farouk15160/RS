@@ -275,6 +275,14 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
+    label: "Getränke",
+    href: "./drinks",
+  },
+  {
+    label: "Benutzer",
+    href: "./home",
+  },
+  {
     label: "Bierjunge Ausrufen",
     href: "#",
   },

@@ -45,8 +45,8 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
       const lastNumber: number = convertedArray.length - 1;
       const lastDate = new Date(convertedArray[lastNumber]?.date);
 
-      console.log(firstDate, "F");
-      console.log(convertedArray[lastNumber]?.date);
+      // console.log(firstDate, "F");
+      // console.log(convertedArray[lastNumber]?.date);
       // console.log(convertedArray.length - 1);
 
       const differenceInTime = lastDate.getTime() - firstDate.getTime();
@@ -56,7 +56,7 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
     }
     return "N/A";
   };
-  console.log(convertedArray);
+
   return convertedArray ? (
     <TableContainer>
       <Table variant="simple">
