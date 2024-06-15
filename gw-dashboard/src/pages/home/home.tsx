@@ -1,15 +1,10 @@
 import React from "react";
 import axios from "axios";
 import {
-  Box,
   Button,
-  Card,
-  CardBody,
-  CardHeader,
   chakra,
   Flex,
   FormControl,
-  Heading,
   Input,
   InputGroup,
   InputLeftElement,
@@ -20,18 +15,19 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Spinner,
   Stack,
-  StackDivider,
-  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import TextJs from "../../texts/de.json";
-import { FaTrash, FaLock, FaUserAlt, FaPlus, FaEdit } from "react-icons/fa";
 import { COLORS } from "../../components/color";
+import { FaLock, FaUserAlt, FaPlus } from "react-icons/fa";
+import { RenderCards } from "./cards";
 
 interface UserData {
   number: number;
   password: number;
+  drinks?: any;
 }
 
 interface UsersData {
@@ -40,34 +36,85 @@ interface UsersData {
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
-const CFaTrash = chakra(FaTrash);
+
 const CFaPlus = chakra(FaPlus);
-const CFEdit = chakra(FaEdit);
 
 const Home: React.FunctionComponent = () => {
-  const [data, setData] = React.useState<UsersData[]>([]);
+  const [data, setData] = React.useState<any>();
+
+  const [load, setLoad] = React.useState<boolean>(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://192.168.178.66:1868/users");
+      setData(response.data.allUsersData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://192.168.178.66:4443");
-        setData(response.data.users);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
   }, []);
-  const addNewUser = () => {};
+
+  const [userName_, setUserName] = React.useState<string>(""); // Initialize state variables
+  const [number_, setNumber] = React.useState<number>(); // Assuming number_ is a string
+  const [userPassword_, setUserPassword] = React.useState<number>();
+  const addNewUser = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setLoad(true);
+
+    if (!number_ || number_.toString().length !== 4) {
+      alert(TextJs.error.error_4);
+      setLoad(false);
+      onClose();
+      return;
+    }
+
+    if (!userPassword_ || userPassword_.toString().length !== 4) {
+      alert(TextJs.error.error_4);
+      setLoad(false);
+      onClose();
+
+      return;
+    }
+
+    const newDataSend = {
+      [userName_]: {
+        number: number_,
+        password: userPassword_,
+      },
+    };
+
+    console.log(newDataSend);
+    try {
+      await axios.post("https://192.168.178.66:1868/users", newDataSend);
+      console.log("POST request successful");
+      fetchData();
+      onClose();
+    } catch (error: any) {
+      alert(error.response.data.message);
+
+      console.error("Error making POST request:", error.response.data.message);
+    } finally {
+      setLoad(false);
+      // onClose();
+    }
+    // onClose();
+  };
 
   const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, id } = e.target;
+    const { name, value } = e.target;
 
-    console.log(id);
-    console.log(name);
-    console.log(value);
+    if (name === "id") {
+      setUserName(value.toLowerCase());
+    }
+    if (name === "number") {
+      setNumber(parseInt(value));
+    }
+    if (name === "password") {
+      setUserPassword(parseInt(value));
+    }
   };
   return (
     <Flex
@@ -79,13 +126,22 @@ const Home: React.FunctionComponent = () => {
       justifyContent="center"
       gap="20px"
     >
-      {data.length > 0 ? (
-        <RenderCards data={data} setData={setData} />
+      {data ? (
+        <RenderCards data={data} fetchData={fetchData} setData={setData} />
       ) : (
         <h1>Kein Zugang zum Server</h1>
       )}
       <Flex alignItems="center" justifyContent="center" padding="40px" w="100%">
         {" "}
+        {load && (
+          <Spinner
+            position="absolute"
+            top="50%"
+            w="100px"
+            left="50%"
+            transform="translate( -50% , -50%)"
+          />
+        )}
         <Flex
           alignItems="center"
           justifyContent="center"
@@ -118,6 +174,7 @@ const Home: React.FunctionComponent = () => {
                         <Input
                           type="text"
                           name="id"
+                          id="id"
                           placeholder={TextJs.login.username}
                           onChange={handleChangeUser}
                         />
@@ -132,6 +189,7 @@ const Home: React.FunctionComponent = () => {
                         <Input
                           type="number"
                           name="number"
+                          id="number"
                           placeholder="id"
                           onChange={handleChangeUser}
                         />
@@ -144,6 +202,7 @@ const Home: React.FunctionComponent = () => {
                         </InputLeftElement>
                         <Input
                           type="number"
+                          id="password"
                           name="password"
                           placeholder={TextJs.login.Password}
                           onChange={handleChangeUser}
@@ -173,194 +232,8 @@ const Home: React.FunctionComponent = () => {
 };
 
 export default Home;
-interface RenderCardsProps {
-  data: UsersData[];
-  setData: React.Dispatch<React.SetStateAction<UsersData[]>>;
+export interface RenderCardsProps {
+  data: any;
+  setData: React.Dispatch<React.SetStateAction<any>>;
+  fetchData: any;
 }
-
-export const RenderCards: React.FunctionComponent<RenderCardsProps> = ({
-  data,
-  setData,
-}) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, id } = e.target;
-    const updatedData = [...data];
-
-    const userIndex = updatedData.findIndex((user) => user[id]);
-    if (userIndex !== -1) {
-      updatedData[userIndex] = {
-        ...updatedData[userIndex],
-        [id]: {
-          ...updatedData[userIndex][id],
-          [name]: value,
-        },
-      };
-    }
-
-    setData(updatedData);
-  };
-
-  const handleData = (event: React.FormEvent) => {
-    event.preventDefault();
-    for (const user of Object.values(data[0])) {
-      if (!user.number || user.number.toString().length !== 4) {
-        alert(TextJs.error.error_4);
-        return false;
-      }
-
-      if (!user.password || user.password.toString().length !== 4) {
-        alert(TextJs.error.error_4);
-        return false;
-      }
-    }
-
-    // Proceed with saving or further processing if validation passes
-    console.log("Data is valid", data);
-    return true;
-  };
-
-  return (
-    <>
-      {Object.entries(data[0] || {}).map(([name, userInfo], index) => (
-        <CardComponent
-          key={index}
-          index={index}
-          name={name}
-          userInfo={userInfo}
-          handleChange={handleChange}
-          handleData={handleData}
-        />
-      ))}
-    </>
-  );
-};
-interface CardComponentProps {
-  index: number;
-  name: string;
-  userInfo: UserData;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleData: (event: React.FormEvent) => boolean;
-}
-
-export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
-  index,
-  name,
-  userInfo,
-  handleChange,
-  handleData,
-}) => {
-  const [edit, setEdit] = React.useState<boolean>(false);
-  const onDelete = () => {
-    console.log("first");
-  };
-
-  return (
-    <Card
-      boxShadow="0px 0px 7px 2px #787475"
-      minW={{ base: "90%", md: "250px", lg: "350px" }}
-      key={index}
-    >
-      <CardHeader>
-        <Heading textTransform="capitalize" size="lg">
-          {name}
-        </Heading>
-      </CardHeader>
-      <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          {!edit ? (
-            <Box>
-              <Text pt="2" fontSize="md">
-                <span style={{ fontWeight: "bold" }}>
-                  {TextJs.general.number}
-                </span>
-                : {userInfo.number}
-              </Text>
-              <Text pt="2" fontSize="md">
-                <span style={{ fontWeight: "bold" }}>
-                  {TextJs.general.password}
-                </span>
-                : {userInfo.password}
-              </Text>
-            </Box>
-          ) : (
-            <form onSubmit={handleData}>
-              <Stack
-                borderRadius="10px"
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.800"
-                boxShadow="md"
-              >
-                <FormControl>
-                  <InputGroup>
-                    <InputLeftElement pointerEvents="none">
-                      <CFaUserAlt color="gray.300" />
-                    </InputLeftElement>
-                    <Input
-                      type="number"
-                      name="number"
-                      id={name}
-                      placeholder={TextJs.login.username}
-                      value={userInfo.number}
-                      onChange={handleChange}
-                    />
-                  </InputGroup>
-                </FormControl>
-                <FormControl>
-                  <InputGroup>
-                    <InputLeftElement pointerEvents="none">
-                      <CFaLock color="gray.300" />
-                    </InputLeftElement>
-                    <Input
-                      type="number"
-                      id={name}
-                      name="password"
-                      placeholder={TextJs.login.Password}
-                      value={userInfo.password}
-                      onChange={handleChange}
-                    />
-                  </InputGroup>
-                </FormControl>
-              </Stack>
-            </form>
-          )}
-          <Flex gap="20px">
-            {!edit ? (
-              <Button
-                _hover={{ bg: COLORS.blue, color: COLORS.white }}
-                color={COLORS.blue}
-                onClick={() => setEdit(true)}
-                // fontSize={{ base: "10px", md: "12px", lg: "13px" }}
-                padding="10px"
-              >
-                <CFEdit />
-              </Button>
-            ) : (
-              <Button
-                _hover={{ bg: COLORS.blue, color: COLORS.white }}
-                color={COLORS.blue}
-                fontSize={{ base: "9px", md: "11px", lg: "12px" }}
-                padding="10px"
-                onClick={(event) => {
-                  handleData(event);
-                  setEdit(!handleData(event));
-                }}
-                type="submit"
-              >
-                {TextJs.general.save}
-              </Button>
-            )}
-            <Button
-              _hover={{ bg: COLORS.red, color: COLORS.white }}
-              color={COLORS.red}
-              onClick={onDelete}
-              //   bg={COLORS.red}
-            >
-              <CFaTrash color="white.700" />
-            </Button>
-          </Flex>
-        </Stack>
-      </CardBody>
-    </Card>
-  );
-};

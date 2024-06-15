@@ -17,7 +17,10 @@
         "number":"Nummer",
         "password":"Passwort",
         "add":"Hinzufügen",
-        "close":"Schließen"
+        "close":"Schließen",
+        "delete":"Löschen",
+        "cancel":"Abbrechen",
+        "drinks":"Getränke zeigen"
     }
     ,"error":{
         "error_4":"Das Passwort und Id müssen vier Ziffern haben"

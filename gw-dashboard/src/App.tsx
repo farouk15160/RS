@@ -59,10 +59,7 @@ const App: React.FunctionComponent = () => {
               element={
                 authContext?.isLoggedIn ? (
                   <>
-                    <Navbar />
-                    <AnimateDev>
-                      <Home />
-                    </AnimateDev>
+                    <Navigate to="home" />
                   </>
                 ) : (
                   <Navigate to="login" />
