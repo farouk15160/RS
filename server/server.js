@@ -1,7 +1,9 @@
 const https = require("https");
 const fs = require("fs");
+const cors = require("cors");
 const app = require("./app");
 
+app.use(cors());
 const key = fs.readFileSync("private.key");
 const cert = fs.readFileSync("certificate.crt");
 const options = {

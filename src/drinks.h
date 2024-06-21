@@ -1,19 +1,21 @@
 #ifndef DRINKS_H
 #define DRINKST_H
 
-#include <Arduino.h>
 #include <Keypad.h>
-
+#include <Arduino.h>
+#include <ArduinoJson.h>
+#
 class Drinks
 {
 public:
-    Drinks();
+    Drinks(); // Default constructo
     ~Drinks();
-    void handleDrinkList(uint8_t customKey, const char *name);
+    void handleDrinkList(const char *name);
+    JsonObject drinksData;
 
 private:
-    const uint8_t drinksNumber[];
-    const char drinksId[];
+    // const char drinksId[];
+    Keypad customKeypad;
 };
 
 #endif

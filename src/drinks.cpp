@@ -1,97 +1,105 @@
 #include "drinks.h"
-#include "Keypad.h"
-#include "httpSend.h"
+#include "handleJson.h"
 
-HttpSend httpSend
-
-// Json Drinks
-HttpSend::HttpSend()
-    : for (size_t i = 0; i < ARRAY_SIZE(drinks); i++)
+extern HandleJson handleJson;
+// Default constructor definition
+Drinks::Drinks()
 {
-  drinksId[i] = drinks[i]["id"];
-  drinksNumber[i] = drinks[i]["number"];
-}
-{
-  // memset(inputArray, 0, sizeof(inputArray));
+    // Initialize handleJson or other member variables if needed
 }
 
-void Drinks::handleDrinkList(uint8_t customKey, const char *name)
-{
-  Serial.println(F("Getränke:"));
-  Serial.println(F("_________________________________________"));
-  Serial.println(F("|Augustina 1  | SoftDrinks 2  | Wasser 3  |"));
-  Serial.println(F("________________________________________"));
-  Serial.println(F("|Veltins   4  | Otti       5  | A. Frei 6 |"));
-  Serial.println(F("_________________________________________"));
-  bool loopDrinks = true;
+// Constructor definition accepting HandleJson reference
 
-  while (loopDrinks)
-  {
-    if (customKey)
+Drinks::~Drinks()
+{
+}
+
+void Drinks::handleDrinkList(const char *name)
+{
+    uint8_t customKey = customKeypad.getKey();
+
+    Serial.println(F("Getränke:"));
+    Serial.println(F("_________________________________________"));
+    Serial.println(F("|Augustina 1  | SoftDrinks 2  | Wasser 3  |"));
+    Serial.println(F("________________________________________"));
+    Serial.println(F("|Veltins   4  | Otti       5  | A. Frei 6 |"));
+    Serial.println(F("_________________________________________"));
+    bool loopDrinks = true;
+
+    while (loopDrinks)
     {
-      uint8_t input = customKey - 48;
-      Serial.print(F("Key Pressed: "));
-      Serial.println(input);
-      if ((input) != 17 && (input) != 18)
-      {
-        for (size_t i = 0; i < 6; i++)
+        if (customKey)
         {
-          if (input == drinksNumber[i])
-          {
-            Serial.print(F("Ausgewhälze Getränk:  "));
-            Serial.print(drinksId[i]);
-            bool loopAmmount = true;
-            while (loopAmmount)
+            uint8_t input = customKey - 48;
+            Serial.print(F("Key Pressed:____ "));
+            Serial.println(input);
+            if ((input) >= 1 && (input) <= 9)
             {
-              Serial.println(F("Bitte die Menge eingeben"));
-              Serial.println(F("Zum Abbrechen A , Bestätigen B"));
+                for (JsonPair item : drinksData)
+                {
+                    const char *drinkname = item.key().c_str();
+                    JsonObject drink = item.value();
+                    int number = drink["number"];
+                    if (input == number)
+                    {
+                        Serial.print(F("Ausgewähltes Getränk:  "));
+                        Serial.print(drinkname);
+                        Serial.println();
+                        bool loopAmount = true;
+                        while (loopAmount)
+                        {
+                            Serial.println(F("Bitte die Menge eingeben"));
+                            Serial.println(F("Zum Abbrechen A , Bestätigen B"));
+                            if (input == 17)
+                            {
+                                Serial.println(F("Vorgang abgebrochen"));
+                                loopAmount = false;
+                            }
+                            else if ((input) >= 1 && (input) <= 9)
+                            {
+                                Serial.print(F("Menge:"));
+                                Serial.print(input);
+                                Serial.print(" x ");
+                                Serial.print(drinkname);
+                                bool loopConfirm = true;
 
-              if ((input) != 17 && (input) != 18)
-              {
-                Serial.print(F("Menge"));
-                Serial.print(input);
-                Serial.print(drinksId[i]);
-                bool loopConfirm = true;
+                                // while (loopConfirm)
+                                // {
+                                //   Serial.println(F("Bist du dir Sicher dass dies Auswhal speichern willst?"));
+                                //   Serial.println(F("Zum Bestätigen B"));
+                                //   if (input == 18)
+                                //   {
+                                //     httpSend.SendData(drinksNumber[i], input, name);
+                                //     loopConfirm = false;
+                                //   }
+                                //   Serial.println(F("Vorgang abgebrochen"))
+                                //       loopConfirm = false;
+                                // }
 
-                // while (loopConfirm)
-                // {
-                //   Serial.println(F("Bist du dir Sicher dass dies Auswhal speichern willst?"));
-                //   Serial.println(F("Zum Bestätigen B"));
-                //   if (input == 18)
-                //   {
-                //     httpSend.SendData(drinksNumber[i], input, name);
-                //     loopConfirm = false;
-                //   }
-                //   Serial.println(F("Vorgang abgebrochen"))
-                //       loopConfirm = false;
-                // }
+                                return;
+                            }
 
-                return;
-              }
-              else if (input == 17)
-              {
-                Serial.println(F("Vorgang ábgebrochen"));
-                loopAmmount = false;
-                return;
-              }
-              else
-              {
-                Serial.println(F("Falshce Eingabe"));
-                loopAmmount = false;
-
-                return;
-              }
+                            else
+                            {
+                                Serial.println(F("Falsche Eingabe"));
+                                loopAmount = false;
+                            }
+                        }
+                    }
+                }
             }
-          }
-        }
-        Serial.println(F("Falshce Eingabe"));
-      }
 
-      else
-      {
-        Serial.println(F("Loop Drinks Ended"));
-        loopDrinks = false;
-      }
+            else if (input == 17)
+            {
+                Serial.println(F("Loop Drinks Ended"));
+                loopDrinks = false;
+            }
+            else
+            {
+                Serial.println(F("Falsche Eingabe"));
+                loopDrinks = false;
+            }
+            customKey = 0;
+        }
     }
-  }
 }

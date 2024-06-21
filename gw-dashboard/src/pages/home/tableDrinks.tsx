@@ -56,17 +56,24 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
     }
     return "N/A";
   };
-
+  const fontSize = { base: "8px", md: "10px", lg: "12px" };
+  const padding = { base: "5px", md: "10px", lg: "20px" };
   return convertedArray ? (
-    <TableContainer>
+    <TableContainer w="100%">
       <Table variant="simple">
-        <TableCaption>von XX.XX bis XX.XX</TableCaption>
+        <TableCaption fontSize={fontSize}>von XX.XX bis XX.XX</TableCaption>
         <Thead>
           <Tr>
-            <Th>Getränk</Th>
-            <Th>Menge</Th>
-            <Th>Datum</Th>
-            <Th></Th>
+            <Th padding={padding} fontSize={fontSize}>
+              Getränk
+            </Th>
+            <Th padding={padding} fontSize={fontSize}>
+              Menge
+            </Th>
+            <Th padding={padding} fontSize={fontSize}>
+              Datum
+            </Th>
+            <Th padding={padding} fontSize={fontSize}></Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -78,12 +85,19 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
               if (ammount !== 0) {
                 return (
                   <Tr key={index}>
-                    <Td>{drink === "A_frei" ? "A. Frei" : drink}</Td>
-                    <Td>{ammount}</Td>
-                    <Td>{date}</Td>
-                    <Td>
+                    <Td padding={padding} fontSize={fontSize}>
+                      {drink === "A_frei" ? "A. Frei" : drink}
+                    </Td>
+                    <Td padding={padding} fontSize={fontSize}>
+                      {ammount}
+                    </Td>
+                    <Td padding={padding} fontSize={fontSize}>
+                      {date}
+                    </Td>
+                    <Td padding={padding} fontSize={fontSize}>
                       {" "}
                       <Button
+                        transform={{ base: "scale(0.8)", md: "scale(1)" }}
                         _hover={{ bg: COLORS.red, color: COLORS.white }}
                         color={COLORS.red}
                         padding={1}
@@ -99,20 +113,29 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
             })
           ) : (
             <Tr>
-              <Td>Kein Data zu Zeigen</Td>
+              <Td padding={padding} fontSize={fontSize}>
+                Kein Data zu Zeigen
+              </Td>
             </Tr>
           )}
         </Tbody>
         <Tfoot>
           <Tr>
-            <Th>Gesamte Kosten</Th>
-            <Th> SUMME</Th>
-            <Th>
+            <Th padding={padding} fontSize={fontSize}>
+              Gesamte Kosten
+            </Th>
+            <Th padding={padding} fontSize={fontSize}>
+              {" "}
+              SUMME
+            </Th>
+            <Th padding={padding} fontSize={fontSize}>
               {" "}
               Über {calculateDaysDifference()} {""}
               Tagen
             </Th>
-            <Th> </Th>
+            <Th padding={padding} fontSize={fontSize}>
+              {" "}
+            </Th>
           </Tr>
         </Tfoot>
       </Table>

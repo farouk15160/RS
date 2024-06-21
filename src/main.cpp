@@ -4,8 +4,9 @@
 #include "httpGet.h"
 #include "handleJson.h"
 #include "getInput.h"
+#include "drinks.h"
 
-#include <avr/pgmspace.h>
+// #include <avr/pgmspace.h>
 // put function declarations here:
 // *: This asterisk indicates that the variable is a pointer. In this case,
 // it means the variable will hold the address of a character or the first character of a string.
@@ -24,16 +25,17 @@
 
 // JSON
 String json;
-JsonArray users;
+JsonObject users;
+JsonObject drinks;
 HandleJson handleJson;
 //
-
+Drinks drinksClass;
 // HTTPDATA
+
 const char *ssid PROGMEM = "Corps Montania";
 const char *password PROGMEM = "1868astaburuaga1107";
-const char *server PROGMEM = "http://192.168.178.66:4443";
-const uint16_t httpPort PROGMEM = 4443;
-HttpGet http(ssid, password, server, httpPort);
+const char *server PROGMEM = "https://192.168.178.66:1868/users-esp";
+HttpGet http(ssid, password, server);
 //
 //
 GetInput getInput;
@@ -41,7 +43,7 @@ GetInput getInput;
 void setup()
 {
   Serial.begin(9600);
-  http.getData();
+  http.ConnectToWifi();
 
   json = http.httpGETRequest(server);
   // Serial.println(json);
@@ -50,20 +52,27 @@ void setup()
     Serial.println(F("Parsing input failed!"));
     return;
   }
-  users = handleJson.parseJson(json, "users");
-  // drinks = handleJson.parseJson(json , "drinks");
-  //
-  getInput.users = users;
-  handleJson.printUsers();
+  Serial.println(json);
 
-  json = "";
-  json.shrinkToFit();
+  users = handleJson.parseJson(json, "users");
+  drinks = handleJson.parseJson(json, "drinks");
+
+  handleJson.printUsers(users);
+  handleJson.printDrinks(drinks);
+
+  getInput.users = users;
+  drinksClass.drinksData = drinks;
+
+  // users.clear();
+  // drinks.clear();
+
   Serial.println(F("Zum Abbrechen , A Drücken"));
   Serial.println(F("Zum Eingeben , B Drücken"));
 }
 
 void loop()
 {
+  // Serial.println("Test");
   getInput.handleKeypad();
 }
 

@@ -20,7 +20,8 @@
         "close":"Schließen",
         "delete":"Löschen",
         "cancel":"Abbrechen",
-        "drinks":"Getränke zeigen"
+        "drinks":"Getränke zeigen",
+        "download":"Herunterladen"
     }
     ,"error":{
         "error_4":"Das Passwort und Id müssen vier Ziffern haben"

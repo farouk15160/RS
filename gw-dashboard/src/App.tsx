@@ -7,6 +7,8 @@ import AuthContext, { AuthContextType } from "./contexts/AuthContext";
 import Navbar from "./components/navbar/navbar";
 import { AnimatePresence, motion } from "framer-motion";
 import Drinks from "./pages/drinks/drinks";
+import HomeCB from "./pages/cbs/home/homeCB";
+import NavbarCB from "./pages/cbs/navbar/navbarCB";
 
 const App: React.FunctionComponent = () => {
   const location: Partial<Location> | string = useLocation();
@@ -16,7 +18,8 @@ const App: React.FunctionComponent = () => {
 
   return (
     <>
-      {authContext?.isLoggedIn && <Navbar />}
+      {authContext?.isLoggedInGetränkewart && <Navbar />}
+      {authContext?.isLoggedInCB && <NavbarCB />}
       <Flex flexDirection="column" w="100%" minH="600px" h="100vh">
         <AnimatePresence onExitComplete={() => window.scroll(0, 0)} mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -34,7 +37,7 @@ const App: React.FunctionComponent = () => {
             <Route
               path="/home"
               element={
-                authContext?.isLoggedIn ? (
+                authContext?.isLoggedInGetränkewart ? (
                   <>
                     <AnimateDev>
                       <Home />
@@ -46,9 +49,23 @@ const App: React.FunctionComponent = () => {
               }
             />
             <Route
+              path="/home-cb"
+              element={
+                authContext?.isLoggedInCB ? (
+                  <>
+                    <AnimateDev>
+                      <HomeCB />
+                    </AnimateDev>
+                  </>
+                ) : (
+                  <Navigate to="login" />
+                )
+              }
+            />
+            <Route
               path="/drinks"
               element={
-                authContext?.isLoggedIn ? (
+                authContext?.isLoggedInGetränkewart ? (
                   <>
                     <AnimateDev>
                       <Drinks />
@@ -62,9 +79,13 @@ const App: React.FunctionComponent = () => {
             <Route
               path="*"
               element={
-                authContext?.isLoggedIn ? (
+                authContext?.isLoggedInGetränkewart ? (
                   <>
                     <Navigate to="home" />
+                  </>
+                ) : authContext?.isLoggedInCB ? (
+                  <>
+                    <Navigate to="home-cb" />
                   </>
                 ) : (
                   <Navigate to="login" />
@@ -96,7 +117,7 @@ export const AnimateDev: React.FC<IChildren> = ({ children }) => {
       }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1.5 }}
+      transition={{ duration: 1 }}
     >
       {children}
     </motion.div>

@@ -35,6 +35,7 @@ import { RenderCardsProps } from "./home";
 import axios from "axios";
 import { EditWindow } from "./editWindow";
 import TableDrinks from "./tableDrinks";
+import { motion } from "framer-motion";
 
 interface CardComponentProps {
   index: number;
@@ -117,15 +118,16 @@ export const RenderCards: React.FunctionComponent<RenderCardsProps> = ({
         />
       )}
       {Object.entries(data || {}).map((user, index) => (
-        <CardComponent
-          edit_={edit_}
-          fetchData={fetchData}
-          key={index}
-          index={index}
-          user={user}
-          handleChange={handleChange}
-          handleData={handleData}
-        />
+        <Flex key={index} minW={{ base: "90%", md: "250px", lg: "350px" }}>
+          <CardComponent
+            edit_={edit_}
+            fetchData={fetchData}
+            index={index}
+            user={user}
+            handleChange={handleChange}
+            handleData={handleData}
+          />
+        </Flex>
       ))}
     </>
   );
@@ -177,138 +179,152 @@ export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
   };
 
   return (
-    <Card
-      boxShadow="0px 0px 7px 2px #787475"
-      minW={{ base: "90%", md: "250px", lg: "350px" }}
-      key={index}
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: -1000,
+        width: "100%",
+        // display: "flex",
+        // flexDirection: "column",
+        // justifyContent: "center",
+        // alignItems: "center",
+      }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 1000 }}
+      transition={{ duration: 1, delay: index * 0.1 + 0.2 }}
     >
-      <CardHeader>
-        <Heading textTransform="capitalize" size="lg">
-          {user[0]}
-        </Heading>
-      </CardHeader>
-      <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          {!edit ? (
-            <Box>
-              <Text pt="2" fontSize="md">
-                <span style={{ fontWeight: "bold" }}>
-                  {TextJs.general.number}
-                </span>
-                : {user[1].number}
-              </Text>
-              <Text pt="2" fontSize="md">
-                <span style={{ fontWeight: "bold" }}>
-                  {TextJs.general.password}
-                </span>
-                : {user[1].password}
-              </Text>
-            </Box>
-          ) : (
-            <EditWindow
-              handleData={handleData}
-              handleChange={handleChange}
-              user={user}
-            />
-          )}
-          <Flex gap="20px">
+      <Card
+        boxShadow="0px 0px 7px 2px #787475"
+        minW={{ base: "90%", md: "250px", lg: "350px" }}
+      >
+        <CardHeader>
+          <Heading textTransform="capitalize" size="lg">
+            {user[0]}
+          </Heading>
+        </CardHeader>
+        <CardBody>
+          <Stack divider={<StackDivider />} spacing="4">
             {!edit ? (
-              <Button
-                _hover={{ bg: COLORS.blue, color: COLORS.white }}
-                color={COLORS.blue}
-                onClick={() => setEdit(true)}
-                padding="10px"
-              >
-                <CFEdit />
-              </Button>
+              <Box>
+                <Text pt="2" fontSize="md">
+                  <span style={{ fontWeight: "bold" }}>
+                    {TextJs.general.number}
+                  </span>
+                  : {user[1].number}
+                </Text>
+                <Text pt="2" fontSize="md">
+                  <span style={{ fontWeight: "bold" }}>
+                    {TextJs.general.password}
+                  </span>
+                  : {user[1].password}
+                </Text>
+              </Box>
             ) : (
+              <EditWindow
+                handleData={handleData}
+                handleChange={handleChange}
+                user={user}
+              />
+            )}
+            <Flex gap="20px">
+              {!edit ? (
+                <Button
+                  _hover={{ bg: COLORS.blue, color: COLORS.white }}
+                  color={COLORS.blue}
+                  onClick={() => setEdit(true)}
+                  padding="10px"
+                >
+                  <CFEdit />
+                </Button>
+              ) : (
+                <Button
+                  _hover={{ bg: COLORS.blue, color: COLORS.white }}
+                  color={COLORS.blue}
+                  fontSize={{ base: "9px", md: "11px", lg: "12px" }}
+                  padding="10px"
+                  onClick={(event) => {
+                    handleData(event);
+                    setEdit(edit_);
+                  }}
+                  type="submit"
+                >
+                  {TextJs.general.save}
+                </Button>
+              )}
+              <Button
+                _hover={{ bg: COLORS.red, color: COLORS.white }}
+                color={COLORS.red}
+                onClick={onOpen}
+              >
+                <CFaTrash color="white.700" />
+              </Button>
               <Button
                 _hover={{ bg: COLORS.blue, color: COLORS.white }}
                 color={COLORS.blue}
                 fontSize={{ base: "9px", md: "11px", lg: "12px" }}
-                padding="10px"
-                onClick={(event) => {
-                  handleData(event);
-                  setEdit(edit_);
-                }}
-                type="submit"
+                onClick={TABLE.onOpen}
               >
-                {TextJs.general.save}
+                {" "}
+                {TextJs.general.drinks}
               </Button>
-            )}
-            <Button
-              _hover={{ bg: COLORS.red, color: COLORS.white }}
-              color={COLORS.red}
-              onClick={onOpen}
-            >
-              <CFaTrash color="white.700" />
-            </Button>
-            <Button
-              _hover={{ bg: COLORS.blue, color: COLORS.white }}
-              color={COLORS.blue}
-              fontSize={{ base: "9px", md: "11px", lg: "12px" }}
-              onClick={TABLE.onOpen}
-            >
-              {" "}
-              {TextJs.general.drinks}
-            </Button>
-            {
-              <AlertDialog
-                leastDestructiveRef={cancelRef}
-                isOpen={isOpen}
-                isCentered
-                onClose={onClose}
-              >
-                <AlertDialogOverlay>
-                  <AlertDialogContent>
-                    <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                      {user[0]} {TextJs.general.delete}
-                    </AlertDialogHeader>
+              {
+                <AlertDialog
+                  leastDestructiveRef={cancelRef}
+                  isOpen={isOpen}
+                  isCentered
+                  onClose={onClose}
+                >
+                  <AlertDialogOverlay>
+                    <AlertDialogContent>
+                      <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                        {user[0]} {TextJs.general.delete}
+                      </AlertDialogHeader>
 
-                    <AlertDialogBody>
-                      Bist du sicher? Diese Aktion kann nicht rückgängig gemacht
-                      werden.
-                    </AlertDialogBody>
+                      <AlertDialogBody>
+                        Bist du sicher? Diese Aktion kann nicht rückgängig
+                        gemacht werden.
+                      </AlertDialogBody>
 
-                    <AlertDialogFooter>
-                      <Button ref={cancelRef} onClick={onClose}>
-                        {TextJs.general.cancel}
+                      <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                          {TextJs.general.cancel}
+                        </Button>
+                        <Button colorScheme="red" onClick={onDelete} ml={3}>
+                          {TextJs.general.delete}
+                        </Button>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialogOverlay>
+                </AlertDialog>
+              }
+              {
+                <Modal
+                  closeOnOverlayClick={false}
+                  size={"full"}
+                  isOpen={TABLE.isOpen}
+                  onClose={TABLE.onClose}
+                >
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>{user[0]} Alkohol Könsum </ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <TableDrinks data={user[1].drinks} />
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <Button colorScheme="blue" mr={3} onClick={TABLE.onClose}>
+                        {TextJs.general.close}
                       </Button>
-                      <Button colorScheme="red" onClick={onDelete} ml={3}>
-                        {TextJs.general.delete}
-                      </Button>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialogOverlay>
-              </AlertDialog>
-            }
-            {
-              <Modal
-                closeOnOverlayClick={false}
-                size={"full"}
-                isOpen={TABLE.isOpen}
-                onClose={TABLE.onClose}
-              >
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>{user[0]} Alkohol Könsum </ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <TableDrinks data={user[1].drinks} />
-                  </ModalBody>
-
-                  <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={TABLE.onClose}>
-                      Close
-                    </Button>
-                    <Button variant="ghost">Secondary Action</Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
-            }
-          </Flex>
-        </Stack>
-      </CardBody>
-    </Card>
+                      <Button variant="ghost">{TextJs.general.download}</Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              }
+            </Flex>
+          </Stack>
+        </CardBody>
+      </Card>
+    </motion.div>
   );
 };

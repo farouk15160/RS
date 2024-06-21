@@ -1,11 +1,10 @@
 #include "HttpGet.h"
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include <WiFiClientSecure.h>
 #include "time.h"
 
-HttpGet::HttpGet(const char *ssid, const char *password, const char *server, int httpPort)
-    : ssid(ssid), password(password), server(server), httpPort(httpPort)
+HttpGet::HttpGet(const char *ssid, const char *password, const char *server)
+    : ssid(ssid), password(password), server(server)
 {
     // Constructor code here
 }
@@ -17,10 +16,8 @@ HttpGet::~HttpGet()
 
 String HttpGet::httpGETRequest(const char *server)
 {
-    WiFiClient client;
     HTTPClient http;
-
-    http.begin(client, server);
+    http.begin(server);
     int httpResponseCode = http.GET();
 
     String payload = "{}";
@@ -41,7 +38,7 @@ String HttpGet::httpGETRequest(const char *server)
     return payload;
 }
 
-void HttpGet::getData()
+void HttpGet::ConnectToWifi()
 {
     Serial.println(F("Starting"));
     Serial.println();

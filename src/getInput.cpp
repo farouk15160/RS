@@ -1,8 +1,9 @@
-#include "GetInput.h"
+#include "getInput.h"
 #include "drinks.h"
+
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
-Drink drinks;
+extern Drinks drinks;
 GetInput::GetInput()
     : hexaKeys{
           {'1', '2', '3', 'A'},
@@ -62,20 +63,18 @@ void GetInput::getUser(int userId)
 {
     Serial.println(userId);
     // Problem sist calling Users users
-    for (JsonObject user : users)
+    for (JsonPair item : users)
     {
-        for (JsonPair kv : user)
-        {
-            const char *name = kv.key().c_str();
-            JsonObject details = kv.value().as<JsonObject>();
 
-            int number = details["number"];
-            int password = details["password"];
-            if (number == userId)
-            {
-                handlePassword(name, password);
-                return;
-            }
+        const char *name = item.key().c_str();
+        JsonObject details = item.value();
+
+        int number = details["number"];
+        int password = details["password"];
+        if (number == userId)
+        {
+            handlePassword(name, password);
+            return;
         }
     }
 
@@ -120,6 +119,10 @@ void GetInput::handleKeypad()
                 Serial.println();
             }
         }
+        else
+        {
+            Serial.println("Eingabe ist Vollständig , bitte B Drücken");
+        }
 
         Serial.print(F("Current input array: "));
         printArray(inputArray, ARRAY_SIZE(inputArray));
@@ -147,7 +150,7 @@ void GetInput::handlePassword(const char *name, int correctPassword)
         {
             uint8_t input = customKey - 48;
             Serial.print(F("Key Pressed: "));
-            if (passwordInputTrys <= 4 && (input) >= 1 && (input) <= 9)
+            if (passwordInputTrys < 4 && (input) >= 1 && (input) <= 9)
             {
                 passwordInput[passwordInputTrys] = input;
                 passwordInputTrys++;
@@ -164,10 +167,10 @@ void GetInput::handlePassword(const char *name, int correctPassword)
                 {
                     Serial.println(F("Passwort wurde richtig eingegeben"));
                     Serial.println(F("Was Hast du heute getrunken?"));
-                    // handleDrinkList();
-                    drinks.handleDrinkList(customKey, name);
 
-                    loopePassword = false;
+                    drinks.handleDrinkList(customKeypad, name);
+
+                    // loopePassword = false;
                 }
                 else
                 {
@@ -185,4 +188,94 @@ void GetInput::handlePassword(const char *name, int correctPassword)
         }
     }
     // 1 = 49  , 2=50 , 3 = 51 , 4=52 , 5=53 , 6=54 , 7=55 , 8=56 , 9=57 , A=65 , B=66 , C=67 , D=68 , *=42 , #=35 , 0=48
+}
+
+void Drinks::handleDrinkList(const char *name)
+{
+    uint8_t customKey = customKeypad.getKey();
+
+    Serial.println(F("Getränke:"));
+    Serial.println(F("_________________________________________"));
+    Serial.println(F("|Augustina 1  | SoftDrinks 2  | Wasser 3  |"));
+    Serial.println(F("________________________________________"));
+    Serial.println(F("|Veltins   4  | Otti       5  | A. Frei 6 |"));
+    Serial.println(F("_________________________________________"));
+    bool loopDrinks = true;
+
+    while (loopDrinks)
+    {
+        if (customKey)
+        {
+            uint8_t input = customKey - 48;
+            Serial.print(F("Key Pressed:____ "));
+            Serial.println(input);
+            if ((input) >= 1 && (input) <= 9)
+            {
+                for (JsonPair item : drinksData)
+                {
+                    const char *drinkname = item.key().c_str();
+                    JsonObject drink = item.value();
+                    int number = drink["number"];
+                    if (input == number)
+                    {
+                        Serial.print(F("Ausgewähltes Getränk:  "));
+                        Serial.print(drinkname);
+                        Serial.println();
+                        bool loopAmount = true;
+                        while (loopAmount)
+                        {
+                            Serial.println(F("Bitte die Menge eingeben"));
+                            Serial.println(F("Zum Abbrechen A , Bestätigen B"));
+                            if (input == 17)
+                            {
+                                Serial.println(F("Vorgang abgebrochen"));
+                                loopAmount = false;
+                            }
+                            else if ((input) >= 1 && (input) <= 9)
+                            {
+                                Serial.print(F("Menge:"));
+                                Serial.print(input);
+                                Serial.print(" x ");
+                                Serial.print(drinkname);
+                                bool loopConfirm = true;
+
+                                // while (loopConfirm)
+                                // {
+                                //   Serial.println(F("Bist du dir Sicher dass dies Auswhal speichern willst?"));
+                                //   Serial.println(F("Zum Bestätigen B"));
+                                //   if (input == 18)
+                                //   {
+                                //     httpSend.SendData(drinksNumber[i], input, name);
+                                //     loopConfirm = false;
+                                //   }
+                                //   Serial.println(F("Vorgang abgebrochen"))
+                                //       loopConfirm = false;
+                                // }
+
+                                return;
+                            }
+
+                            else
+                            {
+                                Serial.println(F("Falsche Eingabe"));
+                                loopAmount = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            else if (input == 17)
+            {
+                Serial.println(F("Loop Drinks Ended"));
+                loopDrinks = false;
+            }
+            else
+            {
+                Serial.println(F("Falsche Eingabe"));
+                loopDrinks = false;
+            }
+            customKey = 0;
+        }
+    }
 }

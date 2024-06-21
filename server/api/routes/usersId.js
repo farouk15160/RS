@@ -3,19 +3,40 @@ const router = express.Router();
 
 const data = require("../../users_data.json");
 
-const getIdData = (id) => {
+const getIdData = (id, password) => {
   for (user in data) {
-    if (data[user].number === parseInt(id)) {
-      return data[user];
+    if (
+      data[user].number === parseInt(id) &&
+      data[user].password === parseInt(password)
+    ) {
+      return {
+        data: { [user]: data[user] },
+        status: 200,
+        successful: true,
+        message: "Bentzer wurde gefunden :)",
+      };
     }
   }
+
+  return {
+    data: null,
+    successful: false,
+    status: 400,
+    message: "Bentzer nicht gefunden",
+  };
 };
 
-router.get("/:userId", (req, res, next) => {
-  const id = req.params.userId;
-  const dataToSend = getIdData(id);
-  res.status(200).json({
-    dataToSend,
+router.post("/", (req, res, next) => {
+  const response = req.body;
+
+  const { data, status, message, successful } = getIdData(
+    response.number,
+    response.password
+  );
+  res.status(status).json({
+    data,
+    message,
+    successful,
   });
 });
 

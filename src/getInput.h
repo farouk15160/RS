@@ -10,7 +10,7 @@ class GetInput
 public:
     GetInput();
     ~GetInput();
-    JsonArray users;
+    JsonObject users;
     void handleKeypad();
     void clearInputArray();
     void printArray(uint8_t inputArray[], size_t arraySize) const;

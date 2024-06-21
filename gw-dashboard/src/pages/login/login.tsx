@@ -19,6 +19,7 @@ import { COLORS } from "../../components/color";
 import Zirkel from "../../images/montania-logo.svg";
 import AuthContext from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface IUserData {
   username: string;
@@ -42,7 +43,7 @@ const Login: React.FunctionComponent = () => {
   if (!authContext) {
     return null; // or some fallback UI
   }
-  const { login } = authContext;
+  const { login, loginCB, setDataCB } = authContext;
 
   const handleShowClick: () => void = () => setShowPassword(!showPassword);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +51,7 @@ const Login: React.FunctionComponent = () => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const handleLogin = (event: React.FormEvent) => {
+  const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     const { username, password } = userData;
     if (
@@ -60,7 +61,30 @@ const Login: React.FunctionComponent = () => {
       login();
       navigate("/home");
     } else {
-      alert("Falsche Eingabe");
+      axios
+        .post("https://192.168.178.66:1868/users/id", {
+          number: parseInt(userData.username),
+          password: parseInt(userData.password),
+        })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.successful) {
+            console.log("POST request successful");
+            setDataCB({
+              number: parseInt(userData.username),
+              password: parseInt(userData.password),
+            });
+            loginCB();
+            navigate("/home-cb");
+          }
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
+          console.error(
+            "Error making POST request:",
+            error.response.data.message
+          );
+        });
     }
   };
 

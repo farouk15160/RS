@@ -9,13 +9,12 @@ public:
     HandleJson();
     ~HandleJson();
 
-    // JsonArray parseJson(const String &json, string key_);
-    void printUsers() const;
+    JsonObject parseJson(const String &json, const char *key_);
+    void printUsers(JsonObject data) const;
+    void printDrinks(JsonObject drinks) const;
 
 private:
-    DynamicJsonDocument doc;
-    const size_t capacity = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(11) + 11 * JSON_OBJECT_SIZE(2) + 370;
-    JsonArray users;
+    StaticJsonDocument<1024> doc;
 };
 
 #endif

@@ -5,6 +5,7 @@
         "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -14,6 +15,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -23,6 +25,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -32,6 +35,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -41,6 +45,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -50,6 +55,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -62,9 +68,10 @@
     "iaroslav": {
         "number": 1226,
         "password": 1641,
-        "drinks": {
+         "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -74,6 +81,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -83,6 +91,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -92,6 +101,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -101,6 +111,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -110,6 +121,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -122,9 +134,10 @@
     "micha": {
         "number": 1227,
         "password": 1741,
-        "drinks": {
+      "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -134,6 +147,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -143,6 +157,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -152,6 +167,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -161,6 +177,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -170,6 +187,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -182,9 +200,10 @@
     "tammam": {
         "number": 1257,
         "password": 1991,
-        "drinks": {
+      "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -194,6 +213,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -203,6 +223,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -212,6 +233,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -221,6 +243,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -230,6 +253,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -245,6 +269,7 @@
         "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -254,6 +279,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -263,6 +289,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -272,6 +299,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -281,6 +309,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -290,6 +319,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -302,9 +332,10 @@
     "marco": {
         "number": 1259,
         "password": 3391,
-        "drinks": {
+    "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -314,6 +345,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -323,6 +355,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -332,6 +365,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -341,6 +375,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -350,6 +385,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -362,9 +398,10 @@
     "ala": {
         "number": 1269,
         "password": 6691,
-        "drinks": {
+   "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -374,6 +411,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -383,6 +421,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -392,6 +431,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -401,6 +441,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -410,6 +451,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -422,9 +464,10 @@
     "emil": {
         "number": 1469,
         "password": 7891,
-        "drinks": {
+      "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -434,6 +477,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -443,6 +487,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -452,6 +497,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -461,6 +507,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -470,6 +517,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -482,9 +530,10 @@
     "ahs": {
         "number": 1111,
         "password": 1111,
-        "drinks": {
+      "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -494,6 +543,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -503,6 +553,7 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -512,6 +563,7 @@
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -521,6 +573,7 @@
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -530,6 +583,7 @@
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -545,6 +599,7 @@
         "drinks": {
             "augustina": {
                 "number": 1,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -554,6 +609,7 @@
             },
             "veltins": {
                 "number": 2,
+                "price": 1.2,
                 "history": [
                     {
                         "ammount": 0,
@@ -563,69 +619,41 @@
             },
             "softDrinks": {
                 "number": 3,
+                "price": 1.2,
                 "history": [
                     {
-                        "ammount": 1,
-                        "date": "2022-11-25"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-11-25"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-12-24"
+                        "ammount": 0,
+                        "date": 0
                     }
                 ]
             },
             "a_frei": {
                 "number": 4,
+                "price": 1.2,
                 "history": [
-                   {
-                        "ammount": 1,
-                        "date": "2022-03-25"
-                    },
                     {
-                        "ammount": 1,
-                        "date": "2022-03-25"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-12-24"
+                        "ammount": 0,
+                        "date": 0
                     }
                 ]
             },
             "wasser": {
                 "number": 5,
+                "price": 1.2,
                 "history": [
                     {
-                        "ammount": 1,
-                        "date": "2022-03-28"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-03-25"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-01-29"
+                        "ammount": 0,
+                        "date": 0
                     }
                 ]
             },
             "otti": {
                 "number": 6,
+                "price": 1.2,
                 "history": [
                     {
-                        "ammount": 1,
-                        "date": "2022-03-25"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-03-25"
-                    },
-                    {
-                        "ammount": 1,
-                        "date": "2022-04-24"
+                        "ammount": 0,
+                        "date": 0
                     }
                 ]
             }
