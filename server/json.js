@@ -61,4 +61,5 @@ const addNewDrinkData = (filePath_, data) => {
     }
   });
 };
+
 module.exports = { addNewUser, addNewDrinkData };

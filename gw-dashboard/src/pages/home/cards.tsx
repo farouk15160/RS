@@ -1,4 +1,5 @@
 import React from "react";
+import * as XLSX from "xlsx"; // Import xlsx
 
 import TextJs from "../../texts/de.json";
 import { COLORS } from "../../components/color";
@@ -177,6 +178,51 @@ export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
       );
     }
   };
+  const convertData = () => {
+    const newArray: any[] = [];
+
+    for (let drink in user[1].drinks) {
+      const mappedItems = user[1].drinks[drink].history.map((item: any) => ({
+        ...item,
+        drink: drink,
+      }));
+
+      newArray.push(...mappedItems);
+    }
+
+    newArray.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+    // newArray.map((item) => {
+    //   if(item.)
+    // } );
+    const filteredArray = newArray.filter((item) => item.ammount !== 0);
+    setConvertedArray(filteredArray);
+  };
+  const [convertedArray, setConvertedArray] = React.useState<any>(null);
+
+  const handleDownload = () => {
+    // console.log(user[0]);
+    convertData();
+    if (!convertedArray) return;
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(convertedArray, {
+      header: ["drink", "ammount", "date"], // Column headers
+    });
+
+    XLSX.utils.book_append_sheet(wb, ws, "Drinks Data");
+
+    const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+
+    const blob = new Blob([wbout], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${user[0]}_drinks_data.xlsx`;
+    link.click();
+  };
 
   return (
     <motion.div
@@ -309,14 +355,16 @@ export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
                     <ModalHeader>{user[0]} Alkohol Könsum </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                      <TableDrinks data={user[1].drinks} />
+                      <TableDrinks cb={false} data={user[1].drinks} />
                     </ModalBody>
 
                     <ModalFooter>
                       <Button colorScheme="blue" mr={3} onClick={TABLE.onClose}>
                         {TextJs.general.close}
                       </Button>
-                      <Button variant="ghost">{TextJs.general.download}</Button>
+                      <Button onClick={handleDownload} variant="ghost">
+                        {TextJs.general.download}
+                      </Button>
                     </ModalFooter>
                   </ModalContent>
                 </Modal>

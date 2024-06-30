@@ -3,7 +3,12 @@ const fs = require("fs");
 const cors = require("cors");
 const app = require("./app");
 
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 const key = fs.readFileSync("private.key");
 const cert = fs.readFileSync("certificate.crt");
 const options = {

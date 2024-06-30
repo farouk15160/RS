@@ -43,7 +43,7 @@ const Login: React.FunctionComponent = () => {
   if (!authContext) {
     return null; // or some fallback UI
   }
-  const { login, loginCB, setDataCB } = authContext;
+  const { login, loginCB, setDataCB, dataCB } = authContext;
 
   const handleShowClick: () => void = () => setShowPassword(!showPassword);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,10 +70,16 @@ const Login: React.FunctionComponent = () => {
           console.log(res.data);
           if (res.data.successful) {
             console.log("POST request successful");
-            setDataCB({
+            const userCBData = {
               number: parseInt(userData.username),
               password: parseInt(userData.password),
-            });
+            };
+
+            setDataCB(userCBData);
+
+            // Store the updated dataCB value in localStorage
+            localStorage.setItem("userCBData", JSON.stringify(userCBData));
+
             loginCB();
             navigate("/home-cb");
           }

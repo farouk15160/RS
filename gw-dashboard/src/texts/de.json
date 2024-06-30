@@ -21,8 +21,24 @@
         "delete":"Löschen",
         "cancel":"Abbrechen",
         "drinks":"Getränke zeigen",
-        "download":"Herunterladen"
-    }
+        "download":"Herunterladen",
+        "consume":"Konsum ansehen"
+    },
+    "addDrink": {
+    "selectDrinkNumber": "Getränkenummer auswählen",
+    "addDrink": "Getränk hinzufügen",
+    "confirmTitle": "Bestätigen Sie das Hinzufügen des Getränks",
+    "confirmDescription": "Möchten Sie dieses Getränk wirklich hinzufügen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "confirmButton": "Ja, hinzufügen"
+  },
+  "toasts": {
+    "noDrinkSelectedTitle": "Kein Getränk ausgewählt.",
+    "noDrinkSelectedDescription": "Bitte wählen Sie eine Getränkenummer.",
+    "drinkAddedTitle": "Getränk hinzugefügt.",
+    "drinkAddedDescription": "Das Getränk wurde erfolgreich hinzugefügt.",
+    "errorTitle": "Fehler.",
+    "errorDescription": "Ein Fehler ist aufgetreten."
+  }
     ,"error":{
         "error_4":"Das Passwort und Id müssen vier Ziffern haben"
     }

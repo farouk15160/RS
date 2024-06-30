@@ -15,7 +15,8 @@ const App: React.FunctionComponent = () => {
   const authContext = React.useContext<AuthContextType | undefined>(
     AuthContext
   );
-
+  console.log(authContext?.isLoggedInCB);
+  console.log(authContext?.isLoggedInGetränkewart);
   return (
     <>
       {authContext?.isLoggedInGetränkewart && <Navbar />}
@@ -26,13 +27,17 @@ const App: React.FunctionComponent = () => {
             <Route
               path="/login"
               element={
-                <AnimateDev>
-                  <Login />
-                </AnimateDev>
+                authContext?.isLoggedInGetränkewart ||
+                authContext?.isLoggedInCB ? (
+                  <Navigate
+                    to={authContext?.isLoggedInCB ? "/home-cb" : "/home"}
+                  />
+                ) : (
+                  <AnimateDev>
+                    <Login />
+                  </AnimateDev>
+                )
               }
-              // element={!isLoggedIn ? <Login /> : <Navigate to="/home" />}
-
-              // element={!isLoggedIn ? <Login /> : <Navigate to="/home" />}
             />
             <Route
               path="/home"

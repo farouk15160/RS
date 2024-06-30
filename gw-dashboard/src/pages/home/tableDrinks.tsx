@@ -17,24 +17,33 @@ import { COLORS } from "../../components/color";
 
 const CFaTrash = chakra(FaTrash);
 
-const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
+const TableDrinks: React.FunctionComponent<any> = ({
+  data,
+  cb,
+  drink_name,
+}) => {
   const [convertedArray, setConvertedArray] = React.useState<any>(null);
+
   const convertData = () => {
     const newArray: any[] = [];
-    for (let drink in data) {
-      const mappedItems = data[drink].history.map((item: any) => ({
-        ...item,
-        drink: drink,
-      }));
+    if (!cb) {
+      for (let drink in data) {
+        const mappedItems = data[drink].history.map((item: any) => ({
+          ...item,
+          drink: drink,
+        }));
 
-      newArray.push(...mappedItems);
+        newArray.push(...mappedItems);
+      }
     }
+    if (cb) newArray.push(...data);
     newArray.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
     const filteredArray = newArray.filter((item) => item.ammount !== 0);
     setConvertedArray(filteredArray);
   };
+
   React.useEffect(() => {
     convertData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,6 +65,7 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
     }
     return "N/A";
   };
+
   const fontSize = { base: "8px", md: "10px", lg: "12px" };
   const padding = { base: "5px", md: "10px", lg: "20px" };
   return convertedArray ? (
@@ -77,16 +87,20 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {convertedArray && convertedArray.length > 1 ? (
+          {convertedArray && convertedArray.length > 0 ? (
             convertedArray.map((item: any, index: any) => {
               let { drink, ammount, date } = item;
-              drink = drink.charAt(0).toUpperCase() + drink.slice(1);
+              if (!cb) drink = drink.charAt(0).toUpperCase() + drink.slice(1);
 
               if (ammount !== 0) {
                 return (
                   <Tr key={index}>
                     <Td padding={padding} fontSize={fontSize}>
-                      {drink === "A_frei" ? "A. Frei" : drink}
+                      {drink && drink === "A_frei" ? "A. Frei" : drink}
+
+                      {drink_name && drink_name === "A_frei"
+                        ? "A. Frei"
+                        : drink_name}
                     </Td>
                     <Td padding={padding} fontSize={fontSize}>
                       {ammount}
@@ -94,18 +108,20 @@ const TableDrinks: React.FunctionComponent<any> = ({ data }) => {
                     <Td padding={padding} fontSize={fontSize}>
                       {date}
                     </Td>
-                    <Td padding={padding} fontSize={fontSize}>
-                      {" "}
-                      <Button
-                        transform={{ base: "scale(0.8)", md: "scale(1)" }}
-                        _hover={{ bg: COLORS.red, color: COLORS.white }}
-                        color={COLORS.red}
-                        padding={1}
-                        // onClick={onOpen}
-                      >
-                        <CFaTrash w={3} color="white.700" />
-                      </Button>
-                    </Td>
+                    {!cb && (
+                      <Td padding={padding} fontSize={fontSize}>
+                        {" "}
+                        <Button
+                          transform={{ base: "scale(0.8)", md: "scale(1)" }}
+                          _hover={{ bg: COLORS.red, color: COLORS.white }}
+                          color={COLORS.red}
+                          padding={1}
+                          // onClick={onOpen}
+                        >
+                          <CFaTrash w={3} color="white.700" />
+                        </Button>
+                      </Td>
+                    )}
                   </Tr>
                 );
               }

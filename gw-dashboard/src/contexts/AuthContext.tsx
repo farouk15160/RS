@@ -26,10 +26,19 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
     React.useState<boolean>(
       localStorage.getItem("isLoggedInGetränkewart") === "true"
     );
+  const [dataCB, setDataCB] = React.useState<any>(() => {
+    const storedData = localStorage.getItem("userCBData");
+    return storedData !== "undefined" &&
+      storedData !== undefined &&
+      storedData !== null
+      ? JSON.parse(storedData)
+      : null;
+  });
   const [isLoggedInCB, setIsLoggedInCB] = React.useState<boolean>(
-    localStorage.getItem("isLoggedInCB") === "true"
+    dataCB !== "undefined" && dataCB !== undefined && dataCB !== null
+      ? true
+      : false
   );
-  const [dataCB, setDataCB] = React.useState<any>();
 
   const cleanupSession = () => {
     localStorage.removeItem("isLoggedInGetränkewart");
@@ -37,21 +46,26 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
   };
 
   React.useEffect(() => {
-    // const storedLoggedInGW =
-    //   localStorage.getItem("isLoggedInGetränkewart") === "true";
-    // if (storedLoggedInGW) {
-    //   setIsLoggedInGetränkewart(true);
-    // }
-    // const storedLoggedInCB = localStorage.getItem("isLoggedInCB") === "true";
-    // if (storedLoggedInCB) {
-    //   setIsLoggedInGetränkewart(true);
-    // }
+    const storedLoggedInGW = localStorage.getItem("isLoggedInGetränkewart");
+    const storedLoggedInCB = localStorage.getItem("isLoggedInCB");
+
+    if (storedLoggedInGW && storedLoggedInCB) {
+      cleanupSession();
+      setIsLoggedInGetränkewart(false);
+      setIsLoggedInCB(false);
+    } else {
+      if (storedLoggedInGW) {
+        setIsLoggedInGetränkewart(true);
+      }
+      if (dataCB) {
+        setIsLoggedInCB(true);
+      }
+    }
+
     const timeoutId = setTimeout(cleanupSession, 24 * 60 * 60 * 1000);
-    // Add event listener for beforeunload to clean up session
-    // window.addEventListener("beforeunload", cleanupSession);
+
     return () => {
       clearTimeout(timeoutId);
-      // window.removeEventListener("beforeunload", cleanupSession);
     };
   }, []);
 
@@ -68,19 +82,16 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
   };
 
   const logout = () => {
-    // cleanupSession();
-
     localStorage.removeItem("isLoggedInGetränkewart");
-    // alert("Your loged out");
-
     setIsLoggedInGetränkewart(false);
+    alert("Your loged out as GW");
   };
   const logoutCB = () => {
     localStorage.removeItem("isLoggedInCB");
-    // alert("Your loged out");
-    // cleanupSession();
-
+    localStorage.removeItem("userCBData");
     setIsLoggedInCB(false);
+    setDataCB(null);
+    alert("You logged out as CB");
   };
 
   return (
