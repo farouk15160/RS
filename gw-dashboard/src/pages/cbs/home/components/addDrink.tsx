@@ -21,6 +21,8 @@ const AddDrink: React.FunctionComponent<any> = ({
   user_name,
   user_data_number,
   drink_name,
+  fetchData,
+  fetchDrinks,
 }) => {
   const [number, setNumber] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -67,9 +69,9 @@ const AddDrink: React.FunctionComponent<any> = ({
         });
         setNumber(null); // Clear the selection after successful submission
         onClose(); // Close the dialog after submission
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+
+        fetchData();
+        fetchDrinks();
       } else {
         toast({
           title: TEXT.toasts.errorTitle,

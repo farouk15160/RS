@@ -136,6 +136,8 @@ const HomeCB = () => {
                       drinkKey={drinkKey}
                       value={value}
                       username={username}
+                      fetchDrinks={fetchDrinks}
+                      fetchData={fetchData}
                       data={data[username]}
                     />
                   </Flex>
@@ -164,6 +166,8 @@ interface ICardComponent {
   drinks: any;
   data: any;
   username: any;
+  fetchData: any;
+  fetchDrinks: any;
 }
 
 export const CardComponent: React.FunctionComponent<ICardComponent> = ({
@@ -172,6 +176,8 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
   drinks,
   data,
   username,
+  fetchData,
+  fetchDrinks,
 }) => {
   const [convertedArray, setConvertedArray] = React.useState<any>(null);
 
@@ -336,7 +342,8 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
               user_data_number={data.number}
               user_name={username}
               drink_name={drinkKey}
-              // cb={true}
+              fetchDrinks={fetchDrinks}
+              fetchData={fetchData}
               // data={data.drinks[drinkKey].history}
             />
           </ModalBody>
