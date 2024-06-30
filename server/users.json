@@ -39,9 +39,17 @@
         "bummeln": {
             "number": 2222,
             "password": 2222
+        },
+        "kaisar ": {
+            "number": 1652,
+            "password": 1243
+        },
+        "elie": {
+            "number": 7676,
+            "password": 8676
         }
     },
-    "drinks": {
+   "drinks": {
         "augustina": {
             "number": 1,
             "price": 0,
@@ -85,6 +93,11 @@
         "trocknen": {
             "number": 9,
             "price": 1.2,
+            "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYDXgw8H4ihVr2d74hy6PAcZw2tbdr2-TaA&s"
+        },
+        "wein": {
+            "number": 10,
+            "price": 3,
             "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYDXgw8H4ihVr2d74hy6PAcZw2tbdr2-TaA&s"
         }
     }

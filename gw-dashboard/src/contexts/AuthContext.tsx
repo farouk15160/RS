@@ -84,14 +84,12 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
   const logout = () => {
     localStorage.removeItem("isLoggedInGetränkewart");
     setIsLoggedInGetränkewart(false);
-    alert("Your loged out as GW");
   };
   const logoutCB = () => {
     localStorage.removeItem("isLoggedInCB");
     localStorage.removeItem("userCBData");
     setIsLoggedInCB(false);
     setDataCB(null);
-    alert("You logged out as CB");
   };
 
   return (

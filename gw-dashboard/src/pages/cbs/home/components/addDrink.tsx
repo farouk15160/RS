@@ -67,7 +67,9 @@ const AddDrink: React.FunctionComponent<any> = ({
         });
         setNumber(null); // Clear the selection after successful submission
         onClose(); // Close the dialog after submission
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } else {
         toast({
           title: TEXT.toasts.errorTitle,

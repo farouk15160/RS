@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const allUsersData = require("../../users_data.json");
+const drinks = require("../../users.json");
 const addNewUser = require("../../json");
 
 const checkUser = (name, number, password) => {
@@ -25,65 +26,15 @@ const checkUser = (name, number, password) => {
   allUsersData[name] = {
     number: number,
     password: password,
-    drinks: {
-      augustina: {
-        number: 1,
-        history: [
-          {
-            ammount: 0,
-            date: 0,
-          },
-        ],
-      },
-      veltins: {
-        number: 2,
-        history: [
-          {
-            ammount: 0,
-            date: 0,
-          },
-        ],
-      },
-      softDrinks: {
-        number: 3,
-        history: [
-          {
-            ammount: 0,
-            date: 0,
-          },
-        ],
-      },
-      a_frei: {
-        number: 4,
-        history: [
-          {
-            ammount: 0,
-            date: 0,
-          },
-        ],
-      },
-      wasser: {
-        number: 5,
-        history: [
-          {
-            ammount: 0,
-            date: 0,
-          },
-        ],
-      },
-      otti: {
-        number: 6,
-        history: [
-          {
-            ammount: 0,
-            date: 0,
-          },
-        ],
-      },
-    },
+    drinks: {},
   };
+  for (let drink in drinks.drinks) {
+    allUsersData[name].drinks[drink] = {
+      history: [],
+    };
+  }
 
-  addNewUser(allUsersData, String("users_data.json"));
+  addNewUser.addNewUser(allUsersData, String("users_data.json"));
 
   return { message: "Benutzer wurde erfolgreich hinzugefügt", status: 201 };
 };

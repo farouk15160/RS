@@ -1,4 +1,3 @@
-// const users = require("./user_data.json");
 const fs = require("fs");
 
 const changeJson = (users) => {
@@ -21,18 +20,19 @@ const changeJson = (users) => {
     };
     allUsers.drinks[drink] = userObject;
   }
+  // DRINKS SHOUL BE ADDED CORRECTLY
 
   const users_to_write = JSON.stringify(allUsers, null, 4);
 
   const filePath = "users.json";
 
-  fs.writeFile(filePath, users_to_write, (err) => {
-    if (err) {
-      console.error("Error writing JSON file:", err);
-    } else {
-      console.log(`JSON data has been written to ${filePath}`);
-    }
-  });
+  // fs.writeFile(filePath, users_to_write, (err) => {
+  //   if (err) {
+  //     console.error("Error writing JSON file:", err);
+  //   } else {
+  //     console.log(`JSON data has been written to ${filePath}`);
+  //   }
+  // });
 };
 
 const addNewUser = (new_data, fileName) => {
@@ -52,8 +52,7 @@ const addNewDrinkData = (filePath_, data) => {
   const drink_to_write = JSON.stringify(data, null, 4);
 
   const filePath = filePath_;
-
-  fs.writeFile(filePath, drink_to_write, (err) => {
+  fs.writeFile(filePath, drink_to_write, "utf8", (err) => {
     if (err) {
       console.error("Error writing JSON file:", err);
     } else {

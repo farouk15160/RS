@@ -39,7 +39,8 @@ const removeDrink = (id) => {
   for (const drink in drinks.drinks) {
     if (id === drinks.drinks[drink].number) {
       delete drinks.drinks[drink];
-      addNewDrinkData("users.json", drink);
+      console.log(drinks);
+      addNewDrinkData("users.json", drinks);
       return {
         status: 200,
         message: "Getränk wurde gelöscht",
@@ -54,18 +55,26 @@ const removeDrink = (id) => {
     successful: false,
   };
 };
-const addNewData = (name, price) => {
+const addNewData = (name, price, img) => {
   if (drinks.drinks.hasOwnProperty(name))
     return {
       status: 400,
       message: "Getränk existiert schon",
       successful: false,
     };
+
   drinks.drinks[name] = {
     number: checkId(),
     price: price,
+    img: img,
   };
+  for (const user in users) {
+    users[user].drinks[name] = {
+      history: [],
+    };
+  }
   addNewDrinkData("users.json", drinks);
+  addNewDrinkData("users_data.json", users);
   return {
     status: 200,
     message: "Getränk wurde erfolgreich hinzugefügt",
@@ -137,9 +146,10 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
   const data = req.body;
 
-  let { name, price } = data;
+  let { name, price, img } = data;
+
   name = name.toLowerCase();
-  const { status, message } = addNewData(name, price);
+  const { status, message } = addNewData(name, price, img);
 
   res.status(status).json({
     message: message,
@@ -164,14 +174,57 @@ router.post("/user", (req, res, next) => {
   });
 });
 
-router.delete("/:drinkId", (req, res, next) => {
+router.delete("/", (req, res, next) => {
   const response = req.body;
   let { name, number } = response;
-  name = name.toLowerCase();
   number = parseInt(number);
+
   const { status, message } = removeDrink(number);
   res.status(status).json({
     message: message,
+  });
+});
+
+router.put("/:number", (req, res, next) => {
+  const { number } = req.params;
+  const { name, price, img } = req.body;
+
+  // Basic validation
+  if (!name || !img || price == null) {
+    return res.status(400).json({
+      status: 400,
+      message: "Name, image URL, and price are required.",
+      successful: false,
+    });
+  }
+
+  // Convert name to lowercase for consistency
+  const lowerCaseName = name.toLowerCase();
+  const drinkKey = Object.keys(drinks.drinks).find(
+    (key) => drinks.drinks[key].number === parseInt(number)
+  );
+
+  if (!drinkKey) {
+    return res.status(404).json({
+      status: 404,
+      message: "Drink not found.",
+      successful: false,
+    });
+  }
+
+  // Update the drink
+  drinks.drinks[drinkKey] = {
+    number: parseInt(number),
+    price,
+    img,
+  };
+
+  addNewDrinkData("users.json", drinks);
+
+  res.status(200).json({
+    status: 200,
+    message: "Drink updated successfully.",
+    successful: true,
   });
 });
 

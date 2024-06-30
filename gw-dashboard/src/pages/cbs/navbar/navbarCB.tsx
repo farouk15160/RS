@@ -32,6 +32,28 @@ export default function NavbarCB() {
   const authContext = React.useContext<AuthContextType | undefined>(
     AuthContext
   );
+
+  const [notifications, setNotifications] = React.useState<string[]>([]);
+
+  const handleBierjungeClick = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/bierjunge", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      console.log("Notification sent successfully");
+    } catch (error) {
+      console.error("Error sending notification:", error);
+    }
+  };
+
   return (
     <Box>
       <Flex
@@ -69,7 +91,7 @@ export default function NavbarCB() {
           </Text>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
+            <DesktopNav handleBierjungeClick={handleBierjungeClick} />
           </Flex>
         </Flex>
 
@@ -98,8 +120,13 @@ export default function NavbarCB() {
     </Box>
   );
 }
+interface NavProps {
+  handleBierjungeClick: () => void;
+}
 
-const DesktopNav = () => {
+const DesktopNav: React.FunctionComponent<NavProps> = ({
+  handleBierjungeClick,
+}) => {
   const linkColor = useColorModeValue("white.600", "white");
   const linkHoverColor = useColorModeValue(COLORS.red, "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
@@ -113,6 +140,11 @@ const DesktopNav = () => {
               <Box
                 as="a"
                 p={2}
+                onClick={
+                  navItem.label === "Bierjunge Ausrufen"
+                    ? handleBierjungeClick
+                    : undefined
+                }
                 href={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}

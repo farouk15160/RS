@@ -80,17 +80,17 @@ const HomeCB = () => {
       );
     }
   };
+  React.useEffect(() => {
+    if (!drinks) {
+      fetchDrinks();
+    }
+  }, [drinks, fetchDrinks]);
   console.log(drinks);
   React.useEffect(() => {
     if (!data) {
       fetchData();
     }
   }, [data, fetchData]);
-  React.useEffect(() => {
-    if (!drinks) {
-      fetchDrinks();
-    }
-  }, [drinks, fetchDrinks]);
   React.useEffect(() => {
     if (data) {
       const firstKey = Object.keys(data)[0];
