@@ -39,66 +39,58 @@
         "bummeln": {
             "number": 2222,
             "password": 2222
-        },
-        "kaisar ": {
-            "number": 1652,
-            "password": 1243
-        },
-        "elie": {
-            "number": 7676,
-            "password": 8676
         }
     },
-   "drinks": {
+    "drinks": {
         "augustina": {
             "number": 1,
-            "price": 0,
-            "img":"https://www.getraenke-taxi-do.de/media/image/d9/e7/9a/Augustiner-Lagerbier-Hell-0-5-l-Bierflasche-kaufen.jpg"
+            "price": 1,
+            "img": "https://www.getraenke-taxi-do.de/media/image/d9/e7/9a/Augustiner-Lagerbier-Hell-0-5-l-Bierflasche-kaufen.jpg"
         },
         "veltins": {
             "number": 2,
-            "price": 0,
-            "img":"https://www.veltins.de/wp-content/uploads/2016/02/sortiment_packshot_pilsener.png"
+            "price": 1,
+            "img": "https://www.veltins.de/wp-content/uploads/2016/02/sortiment_packshot_pilsener.png"
         },
         "softDrinks": {
             "number": 3,
             "price": 0,
-            "img":"https://cdn.punchng.com/wp-content/uploads/2017/03/29201341/soft-drinks.png"
+            "img": "https://cdn.punchng.com/wp-content/uploads/2017/03/29201341/soft-drinks.png"
         },
         "a_frei": {
             "number": 4,
             "price": 0,
-            "img":"https://cdn.test.de/file/image/ct/produktbilder/330000030830/v1/10/hauptbild_original/hauptbild_original.jpg"
+            "img": "https://cdn.test.de/file/image/ct/produktbilder/330000030830/v1/10/hauptbild_original/hauptbild_original.jpg"
         },
         "wasser": {
             "number": 5,
             "price": 0,
-            "img":"https://flaschen-flitzer.de/wp-content/uploads/2020/07/Heiligentaler-Medium-Glas.png"
+            "img": "https://flaschen-flitzer.de/wp-content/uploads/2020/07/Heiligentaler-Medium-Glas.png"
         },
         "otti": {
             "number": 6,
             "price": 0,
-            "img":"https://www.kelemidis.de/media/imported/402050.jpg"
+            "img": "https://www.kelemidis.de/media/imported/402050.jpg"
         },
         "sauna": {
             "number": 7,
             "price": 1.2,
-            "img":"https://blog.urbansportsclub.com/wp-content/uploads/2024/03/DoriVita-1024x689.jpeg"
+            "img": "https://blog.urbansportsclub.com/wp-content/uploads/2024/03/DoriVita-1024x689.jpeg"
         },
         "wäsche": {
             "number": 8,
             "price": 1.2,
-            "img":"https://www.merkur.de/assets/images/33/386/33386855-die-richtige-vorbereitung-ist-beim-waesche-waschen-das-und-QSBG.jpg"
+            "img": "https://www.merkur.de/assets/images/33/386/33386855-die-richtige-vorbereitung-ist-beim-waesche-waschen-das-und-QSBG.jpg"
         },
         "trocknen": {
             "number": 9,
-            "price": 1.2,
-            "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYDXgw8H4ihVr2d74hy6PAcZw2tbdr2-TaA&s"
+            "price": 1,
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYDXgw8H4ihVr2d74hy6PAcZw2tbdr2-TaA&s"
         },
-        "wein": {
+        "sekt": {
             "number": 10,
-            "price": 3,
-            "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYDXgw8H4ihVr2d74hy6PAcZw2tbdr2-TaA&s"
+            "price": 2,
+            "img": "https://m.media-amazon.com/images/I/81FTOhx6QCL.jpg"
         }
     }
 }
