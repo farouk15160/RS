@@ -3,4 +3,4 @@ export const COLORS = {
   blue: "#6c5ffa",
   white: "#bfc3ff",
 };
-export const API = "https://192.168.178.45:1868";
+export const API = "http://192.168.178.45:1868";
