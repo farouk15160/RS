@@ -31,7 +31,7 @@ import axios from "axios";
 import React from "react";
 import TEXT from "../../texts/de.json";
 import { FaPlus } from "react-icons/fa";
-import { COLORS } from "../../components/color";
+import { API, COLORS } from "../../components/color";
 import AddDrinks from "./components/addDrinks";
 import EditDrinks from "./components/editDrinks";
 
@@ -42,7 +42,7 @@ const Drinks = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchDrinks = async () => {
     try {
-      const res = await axios.get("https://192.168.178.66:1868/drinks");
+      const res = await axios.get(`${API}/drinks`);
       // console.log(res);
       if (res.data.successful) {
         console.log("Fetch successful");
@@ -177,7 +177,7 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
   const toast = useToast();
   const handleDelete = async () => {
     try {
-      await axios.delete("https://192.168.178.66:1868/drinks", {
+      await axios.delete(`${API}/drinks`, {
         data: { number: number },
       });
       fetchDrinks();

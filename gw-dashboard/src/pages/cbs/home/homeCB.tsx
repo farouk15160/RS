@@ -26,6 +26,7 @@ import axios from "axios";
 import TEXT from "../../../texts/de.json";
 import TableDrinks from "../../home/tableDrinks";
 import AddDrink from "./components/addDrink";
+import { API } from "../../../components/color";
 // import Drinks from "../../drinks/drinks";
 
 const HomeCB = () => {
@@ -45,10 +46,7 @@ const HomeCB = () => {
     }
 
     try {
-      const res = await axios.post(
-        "https://192.168.178.66:1868/users/id",
-        authContext.dataCB
-      );
+      const res = await axios.post(`${API}/users/id`, authContext.dataCB);
 
       if (res.data.successful) {
         console.log("Fetch successful");
@@ -65,7 +63,7 @@ const HomeCB = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchDrinks = async () => {
     try {
-      const res = await axios.get("https://192.168.178.66:1868/drinks");
+      const res = await axios.get(`${API}/drinks`);
       // console.log(res);
       if (res.data.successful) {
         console.log("Fetch successful");

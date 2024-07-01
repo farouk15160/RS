@@ -2,7 +2,7 @@ import React from "react";
 import * as XLSX from "xlsx"; // Import xlsx
 
 import TextJs from "../../texts/de.json";
-import { COLORS } from "../../components/color";
+import { API, COLORS } from "../../components/color";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -94,7 +94,7 @@ export const RenderCards: React.FunctionComponent<RenderCardsProps> = ({
     }
 
     try {
-      await axios.put("https://192.168.178.66:1868/users", dataSend);
+      await axios.put(`${API}/users`, dataSend);
       console.log("POST request successful");
       fetchData();
       edit_ = false;
@@ -159,7 +159,7 @@ export const CardComponent: React.FunctionComponent<CardComponentProps> = ({
     dataSend = JSON.stringify(dataSend);
 
     try {
-      const response = await axios.delete("https://192.168.178.66:1868/users", {
+      const response = await axios.delete(`${API}/users`, {
         data: {
           [user[0]]: {
             number: user[1].number,

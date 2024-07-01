@@ -21,7 +21,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import TextJs from "../../texts/de.json";
-import { COLORS } from "../../components/color";
+import { API, COLORS } from "../../components/color";
 import { FaLock, FaUserAlt, FaPlus } from "react-icons/fa";
 import { RenderCards } from "./cards";
 
@@ -49,11 +49,9 @@ const Home: React.FunctionComponent = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://192.168.178.66:1868/users");
-      // const drinks = await axios.get("https://192.168.178.66:1868/drinks");
+      const response = await axios.get(`${API}/users`);
+
       setData(response.data.allUsersData);
-      // setDrink(drinks.data.drinks_.augustina.img);
-      // console.log(drinks);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -92,7 +90,7 @@ const Home: React.FunctionComponent = () => {
     };
 
     try {
-      await axios.post("https://192.168.178.66:1868/users", newDataSend);
+      await axios.post(`${API}/users`, newDataSend);
       console.log("POST request successful");
       fetchData();
       onClose();

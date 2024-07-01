@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import Text from "../../texts/de.json";
-import { COLORS } from "../../components/color";
+import { API, COLORS } from "../../components/color";
 import Zirkel from "../../images/montania-logo.svg";
 import AuthContext from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +62,7 @@ const Login: React.FunctionComponent = () => {
       navigate("/home");
     } else {
       axios
-        .post("https://192.168.178.66:1868/users/id", {
+        .post(`${API}/users/id`, {
           number: parseInt(userData.username),
           password: parseInt(userData.password),
         })

@@ -9,6 +9,7 @@ import {
   FormErrorMessage,
   Box,
 } from "@chakra-ui/react";
+import { API } from "../../../components/color";
 
 interface IEditDrinksProps {
   onClose: () => void;
@@ -53,14 +54,11 @@ const EditDrinks: React.FunctionComponent<IEditDrinksProps> = ({
 
     try {
       // Send PUT request to update the drink
-      await axios.put(
-        `https://192.168.178.66:1868/drinks/${data_to_edit.number}`,
-        {
-          name,
-          img: src,
-          price,
-        }
-      );
+      await axios.put(`${API}/${data_to_edit.number}`, {
+        name,
+        img: src,
+        price,
+      });
 
       fetchDrinks(); // Fetch updated drink list
       onClose(); // Close the modal or form

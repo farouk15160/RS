@@ -15,6 +15,7 @@ import {
   AlertDialogCloseButton,
 } from "@chakra-ui/react";
 import TEXT from "../../../../texts/de.json";
+import { API } from "../../../../components/color";
 
 const AddDrink: React.FunctionComponent<any> = ({
   onClose,
@@ -49,16 +50,13 @@ const AddDrink: React.FunctionComponent<any> = ({
     const readableDate = new Date(date).toLocaleString();
 
     try {
-      const response = await axios.post(
-        "https://192.168.178.66:1868/drinks/user",
-        {
-          ammount: number,
-          date: readableDate,
-          number: user_data_number,
-          user_name: user_name,
-          drink: drink_name,
-        }
-      );
+      const response = await axios.post(`${API}/drinks/user`, {
+        ammount: number,
+        date: readableDate,
+        number: user_data_number,
+        user_name: user_name,
+        drink: drink_name,
+      });
       if (response.data.successful) {
         toast({
           title: TEXT.toasts.drinkAddedTitle,

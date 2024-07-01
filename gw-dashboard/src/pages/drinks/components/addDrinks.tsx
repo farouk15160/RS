@@ -9,6 +9,7 @@ import {
   FormErrorMessage,
   Box,
 } from "@chakra-ui/react";
+import { API } from "../../../components/color";
 
 const AddDrinks: React.FunctionComponent<any> = ({ onClose, fetchDrinks }) => {
   // Define state variables for form fields
@@ -28,7 +29,7 @@ const AddDrinks: React.FunctionComponent<any> = ({ onClose, fetchDrinks }) => {
 
     try {
       // Send POST request to add a new drink
-      await axios.post("https://192.168.178.66:1868/drinks", {
+      await axios.post(`${API}/drinks`, {
         name: name,
         img: src,
         price: price,
