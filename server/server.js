@@ -1,4 +1,4 @@
-const https = require("https");
+const https = require("http");
 const fs = require("fs");
 const cors = require("cors");
 const app = require("./app");
@@ -18,13 +18,14 @@ const options = {
 
 const PORT = process.env.PORT || 1868;
 
-const server = https.createServer(options, app);
+// const server = https.createServer(options, app);
+const server = https.createServer(app);
 
 server.on("error", (error) => {
   console.error("HTTPS Server error:", error);
 });
 server.on("listening", () => {
-  console.log("Server is listening on port 3000");
+  console.log("Server is listening on port ", PORT);
 });
 
 server.listen(PORT, () => {
