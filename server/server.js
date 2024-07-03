@@ -1,4 +1,4 @@
-const https = require("https"); // Corrected from "http" to "https"
+const https = require("https"); // Ensure you are using https
 const fs = require("fs");
 const cors = require("cors");
 const app = require("./app");
@@ -11,7 +11,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const key = fs.readFileSync("private.key", "utf8");
-const cert = fs.readFileSync("certificate.crt", "utf8");
+const cert = fs.readFileSync("fullchain.crt", "utf8"); // Use the concatenated certificate
 const options = {
   key: key,
   cert: cert,
