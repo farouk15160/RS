@@ -1,4 +1,4 @@
-const https = require("https"); // Ensure you are using https
+const https = require("http"); // Ensure you are using https
 const fs = require("fs");
 const cors = require("cors");
 const app = require("./app");
@@ -19,7 +19,7 @@ const options = {
 
 const PORT = process.env.PORT || 1868;
 
-const server = https.createServer(options, app); // Use the options with SSL
+const server = https.createServer(app); // Use the options with SSL
 
 server.on("error", (error) => {
   console.error("HTTPS Server error:", error);
