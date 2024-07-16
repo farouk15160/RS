@@ -19,6 +19,7 @@ const CFaTrash = chakra(FaTrash);
 
 const TableDrinks: React.FunctionComponent<any> = ({
   data,
+  drink_price,
   cb,
   drink_name,
 }) => {
@@ -65,7 +66,9 @@ const TableDrinks: React.FunctionComponent<any> = ({
     }
     return "N/A";
   };
-
+  const fetchDrink = () => {
+    console.log("first");
+  };
   const fontSize = { base: "8px", md: "10px", lg: "12px" };
   const padding = { base: "5px", md: "10px", lg: "20px" };
   return convertedArray ? (
@@ -79,6 +82,9 @@ const TableDrinks: React.FunctionComponent<any> = ({
             </Th>
             <Th padding={padding} fontSize={fontSize}>
               Menge
+            </Th>
+            <Th padding={padding} fontSize={fontSize}>
+              Preis
             </Th>
             <Th padding={padding} fontSize={fontSize}>
               Datum
@@ -104,6 +110,9 @@ const TableDrinks: React.FunctionComponent<any> = ({
                     </Td>
                     <Td padding={padding} fontSize={fontSize}>
                       {ammount}
+                    </Td>
+                    <Td padding={padding} fontSize={fontSize}>
+                      {parseFloat(drink_price) * parseFloat(ammount)}
                     </Td>
                     <Td padding={padding} fontSize={fontSize}>
                       {date}

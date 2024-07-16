@@ -308,7 +308,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: "Konsum",
-    href: "",
+    href: "./home-cb",
   },
 
   {
@@ -318,6 +318,11 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Konto",
     href: "#",
+    // onClick
+  },
+  {
+    label: "Biersession",
+    href: "/Biersession",
     // onClick
   },
 ];

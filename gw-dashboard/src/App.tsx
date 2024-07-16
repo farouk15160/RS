@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Drinks from "./pages/drinks/drinks";
 import HomeCB from "./pages/cbs/home/homeCB";
 import NavbarCB from "./pages/cbs/navbar/navbarCB";
+import Biersession from "./pages/cbs/biersession/Biersession";
 
 const App: React.FunctionComponent = () => {
   const location: Partial<Location> | string = useLocation();
@@ -60,6 +61,20 @@ const App: React.FunctionComponent = () => {
                   <>
                     <AnimateDev>
                       <HomeCB />
+                    </AnimateDev>
+                  </>
+                ) : (
+                  <Navigate to="login" />
+                )
+              }
+            />
+            <Route
+              path="/Biersession"
+              element={
+                authContext?.isLoggedInCB ? (
+                  <>
+                    <AnimateDev>
+                      <Biersession />
                     </AnimateDev>
                   </>
                 ) : (

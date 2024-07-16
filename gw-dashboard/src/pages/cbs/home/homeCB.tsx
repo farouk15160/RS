@@ -190,6 +190,7 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
     newArray.map((item) => {
       item.drink = drinkKey;
       item.price = drinks[drinkKey].price;
+      item.totalPrice = item.price * item.ammount;
     });
     const filteredArray = newArray.filter((item) => item.ammount !== 0);
     setConvertedArray(filteredArray);
@@ -200,7 +201,7 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
     if (!convertedArray) return;
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(convertedArray, {
-      header: ["drink", "ammount", "date"], // Column headers
+      header: ["drink", "ammount", "price", "totalPrice", "date"], // Column headers
     });
 
     XLSX.utils.book_append_sheet(wb, ws, "Drinks Data");
@@ -309,6 +310,7 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
           <ModalBody>
             <TableDrinks
               drink_name={drinkKey}
+              drink_price={drinks[drinkKey].price}
               cb={true}
               data={data.drinks[drinkKey].history}
             />

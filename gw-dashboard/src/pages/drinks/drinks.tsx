@@ -238,7 +238,9 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
           >
             <Text>Nummer: {number}</Text>
             <Text>Price: {price}</Text>
-            <Text>Menge: {amount}</Text>
+            {drinkKey !== "trocknen" &&
+              drinkKey !== "wäsche" &&
+              drinkKey !== "sauna" && <Text>Menge: {amount}</Text>}
           </Stack>
         </CardBody>
         <Divider />
