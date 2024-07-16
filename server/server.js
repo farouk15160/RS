@@ -8,14 +8,14 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
-const key = fs.readFileSync("private.key", "utf8");
-const cert = fs.readFileSync("fullchain.crt", "utf8"); // Use the concatenated certificate
-const options = {
-  key: key,
-  cert: cert,
-};
+// const key = fs.readFileSync("private.key", "utf8");
+// const cert = fs.readFileSync("fullchain.crt", "utf8"); // Use the concatenated certificate
+// const options = {
+// key: key,
+// cert: cert,
+// };
 
 const PORT = process.env.PORT || 1868;
 

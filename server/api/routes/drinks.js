@@ -109,6 +109,8 @@ const getUser = (user_name, number, drink, ammount, date) => {
             ammount,
             date
           );
+          const existingAmount = drinks.drinks[drink].amount || 0;
+          drinks.drinks[drink].amount = existingAmount - ammount;
           return {
             data: users[user],
             status: status,
@@ -187,7 +189,7 @@ router.delete("/", (req, res, next) => {
 
 router.put("/:number", (req, res, next) => {
   const { number } = req.params;
-  const { name, price, img } = req.body;
+  const { name, price, img, amount } = req.body;
 
   // Basic validation
   if (!name || !img || price == null) {
@@ -212,11 +214,13 @@ router.put("/:number", (req, res, next) => {
     });
   }
 
+  const existingAmount = drinks.drinks[drinkKey].amount || 0;
   // Update the drink
   drinks.drinks[drinkKey] = {
     number: parseInt(number),
     price,
     img,
+    amount: existingAmount + amount,
   };
 
   addNewDrinkData("users.json", drinks);

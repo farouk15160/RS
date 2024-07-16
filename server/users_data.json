@@ -1,436 +1,413 @@
 {
-    "farouk": {
-        "number": 1223,
-        "password": 1516,
-        "drinks": {
-            "augustina": {
-                "history": [
-                  
-                ]
-            },
-            "veltins": {
-                "history": [
-                  
-                ]
-            },
-            "softDrinks": {
-                "history": [
-                   
-                ]
-            },
-            "a_frei": {
-                "history": [
-                 
-                ]
-            },
-            "wasser": {
-                "history": [
-                   
-                ]
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": [
-                  
-                ]
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": [
-                    
-                ]
-            }
-        }
-    },
-    "iaroslav": {
-        "number": 1226,
-        "password": 1641,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "micha": {
-        "number": 1227,
-        "password": 1741,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "tammam": {
-        "number": 1257,
-        "password": 1991,
-        "drinks": {
-            "augustina": {
-                "history": [
-                  
-                ]
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": [
-                    
-                ]
-            }
-        }
-    },
-    "nils": {
-        "number": 6657,
-        "password": 8991,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "marco": {
-        "number": 1259,
-        "password": 3391,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": [
-                
-                ]
-            }
-        }
-    },
-    "ala": {
-        "number": 1269,
-        "password": 6691,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "emil": {
-        "number": 1469,
-        "password": 7891,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "ahs": {
-        "number": 1111,
-        "password": 1111,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "bummeln": {
-        "number": 2222,
-        "password": 2222,
-        "drinks": {
-            "augustina": {
-                "history": []
-            },
-            "veltins": {
-                "history": []
-            },
-            "softDrinks": {
-                "history": []
-            },
-            "a_frei": {
-                "history": []
-            },
-            "wasser": {
-                "history": []
-            },
-            "otti": {
-                "history": []
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
-    },
-    "kaisar ": {
-        "number": 1652,
-        "password": 1243,
-        "drinks": {
-            "augustina": {
-                "number": 1,
-                "history": [
-                  
-                ]
-            },
-            "veltins": {
-                "number": 2,
-                "history": [
-                   
-                ]
-            },
-            "softDrinks": {
-                "number": 3,
-                "history": [
-                  
-                ]
-            },
-            "a_frei": {
-                "number": 4,
-                "history": [
-                 
-                ]
-            },
-            "wasser": {
-                "number": 5,
-                "history": [
-                 
-                ]
-            },
-            "otti": {
-                "number": 6,
-                "history": [
-               
-                ]
-            },
-            "sauna": {
-                "history": []
-            },
-            "wäsche": {
-                "history": []
-            },
-            "trocknen": {
-                "history": []
-            },
-            "sekt": {
-                "history": []
-            }
-        }
+  "farouk": {
+    "number": 1223,
+    "password": 1516,
+    "drinks": {
+      "augustina": {
+        "history": [
+          {
+            "ammount": 1,
+            "date": "16/07/2024, 22:48:10"
+          },
+          {
+            "ammount": 4,
+            "date": "16/07/2024, 22:48:16"
+          }
+        ]
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
     }
+  },
+  "iaroslav": {
+    "number": 1226,
+    "password": 1641,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "micha": {
+    "number": 1227,
+    "password": 1741,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "tammam": {
+    "number": 1257,
+    "password": 1991,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "nils": {
+    "number": 6657,
+    "password": 8991,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "marco": {
+    "number": 1259,
+    "password": 3391,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "ala": {
+    "number": 1269,
+    "password": 6691,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "emil": {
+    "number": 1469,
+    "password": 7891,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "ahs": {
+    "number": 1111,
+    "password": 1111,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "bummeln": {
+    "number": 2222,
+    "password": 2222,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "kaisar ": {
+    "number": 1652,
+    "password": 1243,
+    "drinks": {
+      "augustina": {
+        "number": 1,
+        "history": []
+      },
+      "veltins": {
+        "number": 2,
+        "history": []
+      },
+      "softDrinks": {
+        "number": 3,
+        "history": []
+      },
+      "a_frei": {
+        "number": 4,
+        "history": []
+      },
+      "wasser": {
+        "number": 5,
+        "history": []
+      },
+      "otti": {
+        "number": 6,
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  }
 }

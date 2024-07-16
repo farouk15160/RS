@@ -8,6 +8,7 @@ import {
   FormLabel,
   FormErrorMessage,
   Box,
+  HStack,
 } from "@chakra-ui/react";
 import { API } from "../../../components/color";
 
@@ -19,6 +20,7 @@ interface IEditDrinksProps {
     img: string;
     price: number;
     number: number; // Add `number` for identifying the drink
+    amount: number; // Add `amount` for the drink quantity
   };
 }
 
@@ -32,6 +34,7 @@ const EditDrinks: React.FunctionComponent<IEditDrinksProps> = ({
   const [name, setName] = useState(drinkKey || "");
   const [src, setSrc] = useState(data_to_edit.img || "");
   const [price, setPrice] = useState(data_to_edit.price || 0);
+  const [amount, setAmount] = useState(data_to_edit.amount || 0);
   const [error, setError] = useState("");
 
   // Use `data_to_edit` to set initial state and validate
@@ -40,6 +43,7 @@ const EditDrinks: React.FunctionComponent<IEditDrinksProps> = ({
       setName(drinkKey);
       setSrc(data_to_edit.img);
       setPrice(data_to_edit.price);
+      setAmount(data_to_edit.amount);
     }
   }, [data_to_edit, drinkKey]);
 
@@ -48,16 +52,17 @@ const EditDrinks: React.FunctionComponent<IEditDrinksProps> = ({
     event.preventDefault();
 
     if (!name || !src || price < 0) {
-      setError("Please provide valid name, src, and price");
+      setError("Please provide valid name, src, price, and amount");
       return;
     }
 
     try {
       // Send PUT request to update the drink
-      await axios.put(`${API}/${data_to_edit.number}`, {
+      await axios.put(`${API}/drinks/${data_to_edit.number}`, {
         name,
         img: src,
         price,
+        amount,
       });
 
       fetchDrinks(); // Fetch updated drink list
@@ -65,6 +70,7 @@ const EditDrinks: React.FunctionComponent<IEditDrinksProps> = ({
       setName(""); // Clear the form
       setSrc("");
       setPrice(0);
+      setAmount(0);
       setError("");
       alert("Drink updated successfully!");
     } catch (err) {
@@ -108,12 +114,27 @@ const EditDrinks: React.FunctionComponent<IEditDrinksProps> = ({
             <FormLabel htmlFor="price">Preis</FormLabel>
             <Input
               id="price"
-              type="number"
               min="0"
+              step="0.01"
+              type="number"
               value={price}
               onChange={(e) => setPrice(parseFloat(e.target.value))}
               placeholder="Enter drink price"
             />
+          </FormControl>
+          <FormControl isRequired isInvalid={!!error}>
+            <FormLabel htmlFor="amount">Menge Hinzufügen</FormLabel>
+            <HStack>
+              <Input
+                id="amount"
+                min="0"
+                step="1"
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(parseInt(e.target.value, 10))}
+                placeholder="Enter drink amount"
+              />
+            </HStack>
           </FormControl>
           {error && <FormErrorMessage>{error}</FormErrorMessage>}
           <Button type="submit" colorScheme="blue" width="full">

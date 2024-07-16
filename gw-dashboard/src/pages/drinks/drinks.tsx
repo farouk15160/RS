@@ -170,7 +170,7 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
 }) => {
   // Ensure drinks and drinkKey are defined before accessing
 
-  const { img, number, price } = value;
+  const { img, number, price, amount } = value;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const EDIT = useDisclosure();
   const [isConfirming, setIsConfirming] = React.useState(false);
@@ -238,6 +238,7 @@ export const CardComponent: React.FunctionComponent<ICardComponent> = ({
           >
             <Text>Nummer: {number}</Text>
             <Text>Price: {price}</Text>
+            <Text>Menge: {amount}</Text>
           </Stack>
         </CardBody>
         <Divider />
