@@ -4,33 +4,72 @@
     "password": 1516,
     "drinks": {
       "augustina": {
-        "history": [
-          "ss"
-        ]
+        "history": []
       },
       "veltins": {
         "history": []
       },
       "softDrinks": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "18/07/2024, 18:41:03"
+          }
+        ]
       },
       "a_frei": {
         "history": []
       },
       "wasser": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 19:36:19"
+          },
+          {
+            "ammount": 6,
+            "date": "7/17/2024, 7:47:40 PM"
+          },
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 23:42:16"
+          },
+          {
+            "ammount": 1,
+            "date": "18/07/2024, 15:39:23"
+          }
+        ]
       },
       "otti": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 19:35:45"
+          },
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 22:24:41"
+          }
+        ]
       },
       "sauna": {
         "history": []
       },
       "wäsche": {
-        "history": []
+        "history": [
+          {
+            "ammount": 2,
+            "date": "17/07/2024, 00:11:47"
+          }
+        ]
       },
       "trocknen": {
-        "history": []
+        "history": [
+          {
+            "ammount": 2,
+            "date": "17/07/2024, 00:11:52"
+          }
+        ]
       },
       "sekt": {
         "history": []
@@ -57,7 +96,12 @@
         "history": []
       },
       "otti": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "7/17/2024, 7:40:54 PM"
+          }
+        ]
       },
       "sauna": {
         "history": []
@@ -84,16 +128,43 @@
         "history": []
       },
       "softDrinks": {
-        "history": []
+        "history": [
+          {
+            "ammount": 2,
+            "date": "17.07.2024, 19:37:21"
+          }
+        ]
       },
       "a_frei": {
         "history": []
       },
       "wasser": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "17.07.2024, 19:37:36"
+          },
+          {
+            "ammount": 1,
+            "date": "17.07.2024, 19:52:09"
+          },
+          {
+            "ammount": 1,
+            "date": "18.07.2024, 15:53:47"
+          }
+        ]
       },
       "otti": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "17.07.2024, 20:47:09"
+          },
+          {
+            "ammount": 1,
+            "date": "17.07.2024, 21:21:31"
+          }
+        ]
       },
       "sauna": {
         "history": []
@@ -120,13 +191,28 @@
         "history": []
       },
       "softDrinks": {
-        "history": []
+        "history": [
+          {
+            "ammount": 2,
+            "date": "7/17/2024, 7:50:14 PM"
+          }
+        ]
       },
       "a_frei": {
-        "history": []
+        "history": [
+          {
+            "ammount": 2,
+            "date": "7/17/2024, 7:39:31 PM"
+          }
+        ]
       },
       "wasser": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "7/17/2024, 7:50:19 PM"
+          }
+        ]
       },
       "otti": {
         "history": []
@@ -192,16 +278,36 @@
         "history": []
       },
       "softDrinks": {
-        "history": []
+        "history": [
+          {
+            "ammount": 2,
+            "date": "7/17/2024, 7:49:37 PM"
+          }
+        ]
       },
       "a_frei": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "7/17/2024, 7:38:51 PM"
+          }
+        ]
       },
       "wasser": {
-        "history": []
+        "history": [
+          {
+            "ammount": 3,
+            "date": "7/17/2024, 7:49:42 PM"
+          }
+        ]
       },
       "otti": {
-        "history": []
+        "history": [
+          {
+            "ammount": 1,
+            "date": "7/17/2024, 7:49:48 PM"
+          }
+        ]
       },
       "sauna": {
         "history": []
@@ -339,13 +445,23 @@
         "history": []
       },
       "a_frei": {
-        "history": []
+        "history": [
+          {
+            "ammount": 3,
+            "date": "7/17/2024, 7:40:18 PM"
+          }
+        ]
       },
       "wasser": {
         "history": []
       },
       "otti": {
-        "history": []
+        "history": [
+          {
+            "ammount": 8,
+            "date": "7/17/2024, 7:40:11 PM"
+          }
+        ]
       },
       "sauna": {
         "history": []
@@ -387,6 +503,101 @@
       },
       "otti": {
         "number": 6,
+        "history": []
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "maxim": {
+    "number": 3121,
+    "password": 3121,
+    "drinks": {
+      "augustina": {
+        "history": []
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": []
+      },
+      "otti": {
+        "history": [
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 20:43:00"
+          },
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 21:21:11"
+          },
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 22:25:52"
+          }
+        ]
+      },
+      "sauna": {
+        "history": []
+      },
+      "wäsche": {
+        "history": []
+      },
+      "trocknen": {
+        "history": []
+      },
+      "sekt": {
+        "history": []
+      }
+    }
+  },
+  "ali": {
+    "number": 7894,
+    "password": 3694,
+    "drinks": {
+      "augustina": {
+        "history": [
+          {
+            "ammount": 1,
+            "date": "17/07/2024, 00:25:32"
+          }
+        ]
+      },
+      "veltins": {
+        "history": []
+      },
+      "softDrinks": {
+        "history": []
+      },
+      "a_frei": {
+        "history": []
+      },
+      "wasser": {
+        "history": [
+          {
+            "ammount": 1,
+            "date": "7/17/2024, 7:58:48 PM"
+          }
+        ]
+      },
+      "otti": {
         "history": []
       },
       "sauna": {
